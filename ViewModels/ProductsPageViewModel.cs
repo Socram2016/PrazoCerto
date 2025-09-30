@@ -24,6 +24,9 @@ public partial class ProductsPageViewModel : ViewModelBase
 
 
     [ObservableProperty]
+    private bool _isPopupOpen = false;
+
+    [ObservableProperty]
     private ObservableCollection<Product> _productsList;
 
     private ComboBoxItem? _comboBox_SelectedItem;
@@ -53,11 +56,10 @@ public partial class ProductsPageViewModel : ViewModelBase
         }
     }
 
+    //botão de pesquisa
     [RelayCommand]
-    private void SearchButton() //botão de pesquisa
+    private void SearchButton() 
     {
-
-
         if (ComboBox_SelectedItem != null && !string.IsNullOrEmpty(SearchTextBox))
         {
             var tempList = new List<Product>();
@@ -66,7 +68,7 @@ public partial class ProductsPageViewModel : ViewModelBase
                 switch (ComboBox_SelectedItem.Tag)
                 {
                     case "Name":
-                        tempList = Products.Where(x => x.Name.Contains(SearchTextBox)).ToList();
+                        tempList = Products.Where(x => x.Name.Contains(SearchTextBox.ToUpper())).ToList();
                         ProductsList = new ObservableCollection<Product>(tempList);
                         break;
                     case "CodeBar":
@@ -80,6 +82,7 @@ public partial class ProductsPageViewModel : ViewModelBase
         }
     }
 
+    // Botão de limpar seleção
     [RelayCommand]
     private void ClearSelection() //botão de limpeza da pesquisa
     {
@@ -87,8 +90,9 @@ public partial class ProductsPageViewModel : ViewModelBase
         ProductsList = new ObservableCollection<Product>(Products);
     }
 
+    // Botão de remover
     [RelayCommand]
-    private void RemoveItem()
+    private void RemoveProduct()
     {
         if (DataGrid_SelectedProduct != null)
         {
@@ -97,8 +101,22 @@ public partial class ProductsPageViewModel : ViewModelBase
 
             string strToJson = JsonConvert.SerializeObject(Products, Formatting.Indented);
             File.WriteAllText(configFilePath, strToJson);
+
         }
     }
 
+    // Botão de Editar
+    [RelayCommand]
+    private void EditProduct()
+    {
+        IsPopupOpen = true;
+    }
+
+    // Botão de fechar
+    [RelayCommand]
+    private void ClosePopup()
+    {
+        IsPopupOpen = false;
+    }
 }
 

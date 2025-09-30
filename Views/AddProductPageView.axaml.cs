@@ -8,9 +8,9 @@ using PrazoCerto.Models;
 
 namespace PrazoCerto.Views;
 
-public partial class HomePageView : UserControl
+public partial class AddProductPageView : UserControl
 {
-    public HomePageView()
+    public AddProductPageView()
     {
         InitializeComponent();
     }
@@ -82,7 +82,7 @@ public partial class HomePageView : UserControl
             string configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"ProductsDatabase.json");
             Product product = new Product
             (
-                name:           ProductNameTextBox.Text!,
+                name:           ProductNameTextBox.Text!.ToUpper(),
                 codeBar:        long.Parse(CodeBarTextBox.Text!),
                 expirationDate: new DateTime(int.Parse(YearTextBox.Text!),
                                              int.Parse(MouthTextBox.Text!),

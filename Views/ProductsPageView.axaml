@@ -36,115 +36,326 @@
       Background="DarkGray"
       CornerRadius="15,15,0,0">
 
+      <StackPanel Orientation="Vertical" Spacing="15">
 
-      
+        <StackPanel Orientation="Horizontal">
 
+          <!--  ComboBox de seleção da pesquisa  -->
+          <ComboBox
+            Width="100"
+            Margin="10,0,0,0"
+            Background="#1a1a1a"
+            Foreground="White"
+            SelectedIndex="0"
+            SelectedItem="{Binding ComboBox_SelectedItem}">
 
+            <ComboBoxItem Content="Nome" Tag="Name" />
+            <ComboBoxItem Content="Codigo" Tag="CodeBar" />
+          </ComboBox>
 
-        <StackPanel Spacing="15" Orientation="Vertical">
+          <TextBox
+            Width="350"
+            Margin="5,0,0,0"
+            HorizontalAlignment="Left"
+            Text="{Binding SearchTextBox, Mode=TwoWay}"
+            Watermark="Pesquisar" />
 
-          <StackPanel Orientation="Horizontal">
+          <!--  Botão de pesquisa  -->
+          <Button
+            Margin="5,0,0,0"
+            Background="#1a1a1a"
+            Command="{Binding SearchButtonCommand}"
+            Content="pesquisar"
+            Foreground="White" />
 
-            <!--  ComboBox de seleção da pesquisa  -->
-            <ComboBox
-              Width="100"
-              Margin="10,0,0,0"
-              Background="#1a1a1a"
-              Foreground="White"
-              SelectedIndex="0"
-              SelectedItem="{Binding ComboBox_SelectedItem}">
+          <!--  Limpa a seleção e barra de pesquisa  -->
+          <Button
+            Margin="5,0,0,0"
+            Background="#1a1a1a"
+            Command="{Binding ClearSelectionCommand}"
+            Content="Limpar"
+            Foreground="White" />
 
-              <ComboBoxItem Content="Nome" Tag="Name" />
-              <ComboBoxItem Content="Codigo" Tag="CodeBar" />
-            </ComboBox>
+          <!--  Botão de editar  -->
+          <Button
+            Width="30"
+            Height="30"
+            Margin="5,0,0,0"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Background="#1a1a1a"
+            Command="{Binding EditProductCommand}"
+            Content="E"
+            ToolTip.Tip="Editar Item">
+            <PathIcon Data="{StaticResource pencil_regular}" Foreground="White" />
+          </Button>
 
-            <TextBox
-              Width="350"
-              Margin="5,0,0,0"
-              HorizontalAlignment="Left"
-              Text="{Binding SearchTextBox, Mode=TwoWay}"
-              Watermark="Pesquisar" />
-
-            <!--  Botão de pesquisa  -->
-            <Button
-              Margin="5,0,0,0"
-              Background="#1a1a1a"
-              Command="{Binding SearchButtonCommand}"
-              Content="pesquisar"
-              Foreground="White" />
-
-            <!--Limpa a seleção e barra de pesquisa-->
-            <Button
-              Margin="5,0,0,0"
-              Background="#1a1a1a"
-              Command="{Binding ClearSelectionCommand}"
-              Content="Limpar"
-              Foreground="White" />
-
-            <!--Remove itens-->
-            <Button
-              Width="30"
-              Height="30"
-              Margin="5,0,0,0"
-              HorizontalAlignment="Right"
-              HorizontalContentAlignment="Center"
-              VerticalContentAlignment="Center"
-              Background="#1a1a1a"
-              Command="{Binding RemoveItemCommand}"
-              Foreground="White"
-              ToolTip.Tip="Deletar">
-              <PathIcon Data="{StaticResource trahscan_regular}" Foreground="White" />
-            </Button>
-
-          </StackPanel>
-
-          <ScrollViewer VerticalScrollBarVisibility="Auto">
-
-            <DataGrid
-              x:Name="MyDataGrid"
-              Margin="10,0,0,0"
-              Background="White"
-              BorderBrush="Black"
-              BorderThickness="1"
-              CanUserReorderColumns="True"
-              CanUserResizeColumns="True"
-              CanUserSortColumns="True"
-              Foreground="Black"
-              GridLinesVisibility="All"
-              IsReadOnly="True"
-              ItemsSource="{Binding ProductsList}"
-              SelectedItem="{Binding DataGrid_SelectedProduct, Mode=TwoWay}">
-
-              <DataGrid.Columns>
-                <DataGridTextColumn
-                  Width="Auto"
-                  Binding="{Binding Name}"
-                  Header="Nome" />
-
-                <DataGridTextColumn
-                  Width="Auto"
-                  Binding="{Binding CodeBar}"
-                  Header="Codigo de Barras" />
-                <DataGridTextColumn
-                  Width="Auto"
-                  Binding="{Binding ExpirationDate, StringFormat='{}{0:d}'}"
-                  Header="Validade" />
-                <DataGridTextColumn
-                  Width="Auto"
-                  Binding="{Binding TimeRemaining}"
-                  Header="Tempo até Vencer" />
-                <DataGridTextColumn
-                  Width="*"
-                  Binding="{Binding Amount}"
-                  Header="Quantidade" />
-              </DataGrid.Columns>
-            </DataGrid>
-          </ScrollViewer>
-
+          <!--  Remove itens  -->
+          <Button
+            Width="30"
+            Height="30"
+            Margin="5,0,0,0"
+            HorizontalAlignment="Right"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Background="#1a1a1a"
+            Command="{Binding RemoveProductCommand}"
+            Foreground="White"
+            ToolTip.Tip="Deletar">
+            <PathIcon Data="{StaticResource trahscan_regular}" Foreground="White" />
+          </Button>
 
         </StackPanel>
 
-      
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+          <DataGrid
+            x:Name="MyDataGrid"
+            Margin="10,0,0,0"
+            Background="White"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CanUserReorderColumns="True"
+            CanUserResizeColumns="True"
+            CanUserSortColumns="True"
+            Foreground="Black"
+            GridLinesVisibility="All"
+            IsReadOnly="True"
+            ItemsSource="{Binding ProductsList}"
+            SelectedItem="{Binding DataGrid_SelectedProduct, Mode=TwoWay}">
+
+            <DataGrid.Columns>
+              <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding Name}"
+                Header="Nome" />
+
+              <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding CodeBar}"
+                Header="Codigo de Barras" />
+              <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding ExpirationDate, StringFormat='{}{0:d}'}"
+                Header="Validade" />
+              <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding TimeRemaining}"
+                Header="Tempo até Vencer" />
+              <DataGridTextColumn
+                Width="*"
+                Binding="{Binding Amount}"
+                Header="Quantidade" />
+            </DataGrid.Columns>
+          </DataGrid>
+        </ScrollViewer>
+
+        <!--  Popup  -->
+        <Popup
+          IsOpen="{Binding IsPopupOpen}"
+          Placement="AnchorAndGravity"
+          PlacementTarget="{Binding $parent[Window]}">
+          <Border
+            Padding="15"
+            Background="Gray"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="15">
+
+            <Grid ColumnSpacing="10" RowSpacing="5">
+
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+
+
+              <Border
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="425"
+                Padding="20"
+                HorizontalAlignment="Left"
+                BorderBrush="Black"
+                BorderThickness="1"
+                CornerRadius="8" />
+
+              <!--  Nome do Produto  -->
+              <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                Content="Nome do Produto"
+                FontSize="16"
+                FontWeight="Bold"
+                Foreground="Black" />
+              <TextBox
+                x:Name="ProductNameTextBox"
+                Grid.Row="0"
+                Grid.Column="1"
+                Width="240"
+                Height="35"
+                HorizontalAlignment="Left"
+                Background="White"
+                CornerRadius="10"
+                FontFamily="Arial" />
+
+
+              <!--  Fechar Popup  -->
+              <Button
+                VerticalAlignment="Top"
+                Grid.Row="0"
+                Grid.Column="3"
+                Background="#1a1a1a"
+                Content="X"
+                Foreground="White"
+                Command="{Binding ClosePopupCommand}"/>
+
+
+              <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="425"
+                Padding="20"
+                HorizontalAlignment="Left"
+                BorderBrush="Black"
+                BorderThickness="1"
+                CornerRadius="8" />
+
+              <!--  Codigo de Barras  -->
+              <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                Content="Codigo de Barras"
+                FontSize="16"
+                FontWeight="Bold"
+                Foreground="Black" />
+              <TextBox
+                x:Name="CodeBarTextBox"
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="240"
+                Height="35"
+                HorizontalAlignment="Left"
+                Background="White"
+                CornerRadius="10" />
+
+
+              <Border
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="425"
+                Padding="20"
+                HorizontalAlignment="Left"
+                BorderBrush="Black"
+                BorderThickness="1"
+                CornerRadius="8" />
+
+              <!--  Validade  -->
+              <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                Content="Data Validade"
+                FontSize="16"
+                FontWeight="Bold"
+                Foreground="Black" />
+              <StackPanel
+                Grid.Row="2"
+                Grid.Column="1"
+                Height="35"
+                Orientation="Horizontal"
+                Spacing="10">
+                <!--  Dia  -->
+                <TextBox
+                  x:Name="DayTextBox"
+                  CornerRadius="10"
+                  TextChanged="OnTwoDigitInput" />
+                <!--  Mês  -->
+                <TextBox
+                  x:Name="MouthTextBox"
+                  CornerRadius="10"
+                  TextChanged="OnTwoDigitInput" />
+                <!--  Ano  -->
+                <TextBox
+                  x:Name="YearTextBox"
+                  CornerRadius="10"
+                  TextChanged="OnThreeDigitInput" />
+              </StackPanel>
+
+
+              <Border
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="250"
+                Padding="20"
+                HorizontalAlignment="Left"
+                BorderBrush="Black"
+                BorderThickness="1"
+                CornerRadius="8" />
+
+              <!--  Quantidade  -->
+              <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                Content="Quantidade"
+                FontSize="16"
+                FontWeight="Bold"
+                Foreground="Black" />
+              <StackPanel
+                Grid.Row="3"
+                Grid.Column="1"
+                Orientation="Horizontal">
+
+                <TextBox
+                  x:Name="AmountTextBox"
+                  Width="55"
+                  Height="35"
+                  HorizontalAlignment="Left"
+                  CornerRadius="10" />
+
+                <!--  Botão de salvar  -->
+                <Button
+                  Margin="100,0,0,0"
+                  Background="#1a1a1a"
+                  Click="OnSave_Click"
+                  Content="Save"
+                  Foreground="White" />
+
+
+              </StackPanel>
+
+
+
+
+
+            </Grid>
+          </Border>
+        </Popup>
+
+      </StackPanel>
+
+
     </Border>
   </Grid>
 

@@ -62,8 +62,9 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
         }
     }
 
+    //botão de pesquisa
     [RelayCommand]
-    private void SearchButton() //botão de pesquisa
+    private void SearchButton() 
     {
         if (ComboBox_SelectedItem != null && !string.IsNullOrEmpty(SearchTextBox))
         {
@@ -73,7 +74,7 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
                 switch (ComboBox_SelectedItem.Tag)
                 {
                     case "Name":
-                        tempList = Products.Where(x => x.Name.Contains(SearchTextBox)).ToList();
+                        tempList = Products.Where(x => x.Name.Contains(SearchTextBox.ToUpper())).ToList();
                         ExpiredProducts = new ObservableCollection<Product>(tempList);
                         break;
                     case "CodeBar":
@@ -87,16 +88,17 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
         }
     }
 
-
+    // Botão de limpeza da pesquisa
     [RelayCommand]
-    private void ClearSelection() //botão de limpeza da pesquisa
+    private void ClearSelection() 
     {
         SearchTextBox = "";
         ExpiredProducts = new ObservableCollection<Product>(Products);
     }
     
+    // Botão de remover produto
     [RelayCommand]
-    private void RemoveItem()
+    private void RemoveProduct()
     {
         if (DataGrid_SelectedProduct != null)
         {
@@ -107,6 +109,4 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
             File.WriteAllText(configFilePath, strToJson);
         }
     }
-
-
 }

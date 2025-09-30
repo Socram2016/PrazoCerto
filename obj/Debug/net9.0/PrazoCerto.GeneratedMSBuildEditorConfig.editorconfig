@@ -27,10 +27,10 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [/home/marcos/Documentos/PrazoCerto/Assets/Styles.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/marcos/Documentos/PrazoCerto/Views/ExpiredProductPageView.axaml]
+[/home/marcos/Documentos/PrazoCerto/Views/AddProductPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/marcos/Documentos/PrazoCerto/Views/HomePageView.axaml]
+[/home/marcos/Documentos/PrazoCerto/Views/ExpiredProductPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/home/marcos/Documentos/PrazoCerto/Views/MainWindow.axaml]

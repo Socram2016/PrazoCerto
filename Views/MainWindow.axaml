@@ -55,7 +55,7 @@
 
         <SplitView.Content>
             <Border Background="#ffffffff" CornerRadius="15">
-                <TransitioningContentControl Content="{Binding CurrentPage}" />
+                <TransitioningContentControl Content="{Binding CurrentPage, Mode=TwoWay}" />
             </Border>
         </SplitView.Content>
     </SplitView>

@@ -28,5 +28,9 @@ public partial class ViewModelBase : ObservableObject
     // pega o caminho do arquivo json que armazena os produtos
     public string configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProductsDatabase.json");
     public string? stringFromJson;
-    
+
+    // Armazena a página atual
+    [ObservableProperty]
+    private static ViewModelBase _currentPage = new AddProductPageViewModel();
+
 }

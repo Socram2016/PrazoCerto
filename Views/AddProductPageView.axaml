@@ -1,0 +1,198 @@
+<UserControl
+  x:Class="PrazoCerto.Views.AddProductPageView"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  mc:Ignorable="d">
+
+
+
+  <Grid Margin="15" RowDefinitions="Auto, *">
+
+    <StackPanel Grid.Row="0" Orientation="Horizontal">
+
+      <Image
+        Width="250"
+        Margin="0,0,0,10"
+        HorizontalAlignment="Left"
+        Source="avares://PrazoCerto/Assets/adicionar_produto.png" />
+    </StackPanel>
+
+    <Border
+      Grid.Row="1"
+      Padding="15"
+      Background="DarkGray"
+      CornerRadius="15,15,0,0">
+
+
+      <StackPanel>
+        <Grid ColumnSpacing="10" RowSpacing="5">
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+          <!--  Nome do Produto  -->
+          <Border
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Width="425"
+            Padding="20"
+            HorizontalAlignment="Left"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="8" />
+          <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="10,0,0,0"
+            VerticalAlignment="Center"
+            Content="Nome do Produto"
+            FontSize="16"
+            FontWeight="Bold"
+            Foreground="Black" />
+          <TextBox
+            x:Name="ProductNameTextBox"
+            Grid.Row="0"
+            Grid.Column="1"
+            Width="240"
+            Height="35"
+            HorizontalAlignment="Left"
+            Background="White"
+            CornerRadius="10"
+            FontFamily="Arial" />
+
+          <!--  Codigo de Barras  -->
+          <Border
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Width="425"
+            Padding="20"
+            HorizontalAlignment="Left"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="8" />
+          <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="10,0,0,0"
+            VerticalAlignment="Center"
+            Content="Codigo de Barras"
+            FontSize="16"
+            FontWeight="Bold"
+            Foreground="Black" />
+          <TextBox
+            x:Name="CodeBarTextBox"
+            Grid.Row="1"
+            Grid.Column="1"
+            Width="240"
+            Height="35"
+            HorizontalAlignment="Left"
+            Background="White"
+            CornerRadius="10" />
+
+          <!--  Validade  -->
+          <Border
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Width="425"
+            Padding="20"
+            HorizontalAlignment="Left"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="8" />
+          <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="10,0,0,0"
+            VerticalAlignment="Center"
+            Content="Data Validade"
+            FontSize="16"
+            FontWeight="Bold"
+            Foreground="Black" />
+          <StackPanel
+            Grid.Row="2"
+            Grid.Column="1"
+            Height="35"
+            Orientation="Horizontal"
+            Spacing="10">
+            <!--  Dia  -->
+            <TextBox
+              x:Name="DayTextBox"
+              CornerRadius="10"
+              TextChanged="OnTwoDigitInput" />
+            <!--  Mês  -->
+            <TextBox
+              x:Name="MouthTextBox"
+              CornerRadius="10"
+              TextChanged="OnTwoDigitInput" />
+            <!--  Ano  -->
+            <TextBox
+              x:Name="YearTextBox"
+              CornerRadius="10"
+              TextChanged="OnThreeDigitInput" />
+          </StackPanel>
+
+          <!--  Quantidade  -->
+          <Border
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Width="250"
+            Padding="20"
+            HorizontalAlignment="Left"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="8" />
+
+          <Label
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="10,0,0,0"
+            VerticalAlignment="Center"
+            Content="Quantidade"
+            FontSize="16"
+            FontWeight="Bold"
+            Foreground="Black" />
+          <TextBox
+            x:Name="AmountTextBox"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="55"
+            Height="35"
+            HorizontalAlignment="Left"
+            CornerRadius="10" />
+
+
+
+        </Grid>
+
+        <Button
+          Margin="0,15,0,0"
+          HorizontalAlignment="Left"
+          Background="#1a1a1a"
+          Click="OnSave_Click">
+          <PathIcon Data="{StaticResource save_as_regular}" Foreground="White" />
+        </Button>
+
+      </StackPanel>
+
+    </Border>
+  </Grid>
+</UserControl>

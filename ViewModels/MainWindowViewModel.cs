@@ -17,8 +17,7 @@ namespace PrazoCerto.ViewModels
         [ObservableProperty]
         private ListItemTemplate? _selectedListItem;
 
-        [ObservableProperty]
-        private static ViewModelBase _currentPage = new HomePageViewModel();
+        
 
         [ObservableProperty]
         private bool _isPaneOpen = false;
@@ -31,7 +30,7 @@ namespace PrazoCerto.ViewModels
 
         public ObservableCollection<ListItemTemplate> Items { get; } = new()
         {
-            new ListItemTemplate(typeof(HomePageViewModel), iconKey: "add_square_regular", label: "Adicionar Produto"),
+            new ListItemTemplate(typeof(AddProductPageViewModel), iconKey: "add_square_regular", label: "Adicionar Produto"),
             new ListItemTemplate(typeof(ExpiredProductPageViewModel), iconKey: "clock_regular", label: "Produtos Vencidos"),
             new ListItemTemplate(typeof(ProductsPageViewModel), iconKey: "bag_2d_regular", label: "Lista de Produtos")
         };
@@ -44,29 +43,11 @@ namespace PrazoCerto.ViewModels
             CurrentPage = (ViewModelBase)instance;
         }
 
-        public void ChangeTo(ViewModelBase viewModel)
-        {
-
-            Texto = "2";
-            if (viewModel is null) return;
-            var instance = Activator.CreateInstance(viewModel.GetType());
-            if (instance == null) return;
-            CurrentPage = (ViewModelBase)instance;
-        }
-
+        [ObservableProperty]
         private double _screenWidth;
-        public double ScreenWidth
-        {
-            get => _screenWidth;
-            set => SetProperty(ref _screenWidth, value);
-        }
 
+        [ObservableProperty]
         private double _screenHeight;
-        public double ScreenHeight
-        {
-            get => _screenHeight;
-            set => SetProperty(ref _screenHeight, value);
-        }
     }
 
 
@@ -87,6 +68,7 @@ namespace PrazoCerto.ViewModels
             {
                 geometry = icon as StreamGeometry;
             }
+            
             ListItemIcon = geometry;
         }
     }

@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "TimeRemaining": "Vencido",
+    "Name": "TOMATE AZEDO",
+    "CodeBar": 1234567890123,
+    "ExpirationDate": "1999-12-10T00:00:00",
+    "Amount": 35
+  }
+]
