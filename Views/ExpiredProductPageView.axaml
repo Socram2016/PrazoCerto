@@ -1,0 +1,148 @@
+<UserControl
+  x:Class="PrazoCerto.Views.ExpiredProductPageView"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:vm="using:PrazoCerto.ViewModels"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  x:DataType="vm:ExpiredProductPageViewModel"
+  mc:Ignorable="d">
+
+
+  <Grid Margin="15" RowDefinitions="Auto, *">
+
+    <StackPanel
+      Grid.Row="0"
+      Orientation="Horizontal">
+
+      <Image
+        Width="250"
+        Margin="0,0,0,10"
+        HorizontalAlignment="Left"
+        Source="avares://PrazoCerto/Assets/produtos_vencidos.png" />
+
+      <Label
+        Grid.Column="1"
+        Margin="10,0,0,0"
+        HorizontalContentAlignment="Center"
+        VerticalContentAlignment="Center"
+        Content="{Binding NumberOfProducts}"
+        FontSize="20" />
+
+    </StackPanel>
+
+    <Border
+      x:Name="MyBorder"
+      Grid.Row="1"
+      Padding="15"
+      Background="DarkGray"
+      CornerRadius="15,15,0,0">
+
+
+
+      <StackPanel Spacing="15" Orientation="Vertical">
+
+        <StackPanel Orientation="Horizontal">
+
+          <ComboBox
+            Width="100"
+            Margin="10,0,0,0"
+            Background="#1a1a1a"
+            Foreground="White"
+            SelectedIndex="0"
+            SelectedItem="{Binding ComboBox_SelectedItem}">
+
+            <ComboBoxItem Content="Nome" Tag="Name" />
+            <ComboBoxItem Content="Codigo" Tag="CodeBar" />
+          </ComboBox>
+
+          <TextBox
+            Width="350"
+            Margin="5,0,0,0"
+            HorizontalAlignment="Left"
+            Text="{Binding SearchTextBox, Mode=TwoWay}"
+            Watermark="Pesquisar" />
+
+          <!--  Botão de pesquisa  -->
+          <Button
+            Margin="5,0,0,0"
+            Background="#1a1a1a"
+            Command="{Binding SearchButtonCommand}"
+            Content="pesquisar"
+            Foreground="White" />
+
+            <!--Limpa seleção e barra de pesquia-->
+          <Button
+            Margin="5,0,0,0"
+            Background="#1a1a1a"
+            Command="{Binding ClearSelectionCommand}"
+            Content="Limpar"
+            Foreground="White" />
+
+          <!--Deleta o item-->
+          <Button
+            Width="30"
+            Height="30"
+            Margin="5,0,0,0"
+            HorizontalAlignment="Right"
+            Background="#1a1a1a"
+            Command="{Binding RemoveItemCommand}"
+            Foreground="White"
+            ToolTip.Tip="Deletar">
+            <PathIcon Data="{StaticResource trahscan_regular}" Foreground="White" />
+          </Button>
+
+        </StackPanel>
+
+        <DataGrid
+          x:Name="MyDataGrid"
+          Margin="10,0,0,0"
+          Background="White"
+          BorderBrush="Black"
+          BorderThickness="1"
+          CanUserReorderColumns="True"
+          CanUserResizeColumns="True"
+          CanUserSortColumns="True"
+          ColumnWidth="Auto"
+          Foreground="Black"
+          GridLinesVisibility="All"
+          IsReadOnly="True"
+          ItemsSource="{Binding ExpiredProducts, Mode=TwoWay}"
+          SelectedItem="{Binding DataGrid_SelectedProduct}">
+
+          <DataGrid.Columns>
+
+            <DataGridTextColumn
+              Width="Auto"
+              Binding="{Binding Name}"
+              Header="Nome" />
+            <DataGridTextColumn
+              Width="Auto"
+              Binding="{Binding CodeBar}"
+              Header="Codigo de Barras" />
+            <DataGridTextColumn
+              Width="Auto"
+              Binding="{Binding ExpirationDate, StringFormat='{}{0:d}'}"
+              Header="Validade" />
+            <DataGridTextColumn
+              Width="Auto"
+              Binding="{Binding TimeRemaining}"
+              Header="Tempo até Vencer" />
+            <DataGridTextColumn
+              Width="*"
+              Binding="{Binding Amount}"
+              Header="Quantidade" />
+
+          </DataGrid.Columns>
+        </DataGrid>
+
+      </StackPanel>
+
+
+
+    </Border>
+  </Grid>
+
+</UserControl>

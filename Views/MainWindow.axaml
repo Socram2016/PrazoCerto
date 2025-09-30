@@ -1,0 +1,63 @@
+<Window
+    x:Class="PrazoCerto.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:PrazoCerto.Models"
+    xmlns:vm="using:PrazoCerto.ViewModels"
+    Title="PrazoCerto"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="avares://PrazoCerto/Assets/icon.ico">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+
+    <SplitView
+        Background="#1a1a1a"
+        CompactPaneLength="70"
+        DisplayMode="CompactInline"
+        IsPaneOpen="{Binding IsPaneOpen}"
+        OpenPaneLength="250"
+        PaneBackground="#1a1a1a">
+
+
+        <SplitView.Pane>
+            <StackPanel Margin="15" Spacing="15">
+                <Button Command="{Binding OpenPaneCommand}">
+                    <PathIcon Data="{StaticResource line_horizontal_3_regular}" Foreground="White" />
+                </Button>
+
+                <ListBox
+                    Background="#1a1a1a"
+                    Foreground="White"
+                    ItemsSource="{Binding Items}"
+                    SelectedItem="{Binding SelectedListItem}">
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:ListItemTemplate}">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                Spacing="15">
+                                <PathIcon Data="{Binding ListItemIcon}" Foreground="White" />
+                                <TextBlock Foreground="White" Text="{Binding Label}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </StackPanel>
+        </SplitView.Pane>
+
+        <SplitView.Content>
+            <Border Background="#ffffffff" CornerRadius="15">
+                <TransitioningContentControl Content="{Binding CurrentPage}" />
+            </Border>
+        </SplitView.Content>
+    </SplitView>
+
+</Window>

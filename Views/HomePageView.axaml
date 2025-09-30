@@ -1,0 +1,118 @@
+<UserControl
+  x:Class="PrazoCerto.Views.HomePageView"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  mc:Ignorable="d">
+
+
+
+  <Grid Margin="15" RowDefinitions="Auto, *">
+
+    <StackPanel
+      Grid.Row="0"
+      Orientation="Horizontal">
+      
+      <Image
+        Width="250"
+        Margin="0,0,0,10"
+        HorizontalAlignment="Left"
+        Source="avares://PrazoCerto/Assets/adicionar_produto.png" />
+    </StackPanel>
+
+    <Border
+      Grid.Row="1"
+      Padding="15"
+      Background="DarkGray"
+      CornerRadius="15,15,0,0">
+      
+      <DockPanel>
+
+        <StackPanel DockPanel.Dock="Top">
+          <Grid ColumnSpacing="10" RowSpacing="10">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label
+              Grid.Row="0"
+              Grid.Column="0"
+              Content="Nome do Produto"
+              Foreground="Black" />
+            <TextBox
+              x:Name="ProductNameTextBox"
+              Grid.Row="0"
+              Grid.Column="1"
+              Width="250"
+              HorizontalAlignment="Left"
+              Background="White"
+              FontFamily="Arial" />
+
+            <Label
+              Grid.Row="1"
+              Grid.Column="0"
+              Content="Codigo de Barras"
+              Foreground="Black" />
+            <TextBox
+              x:Name="CodeBarTextBox"
+              Grid.Row="1"
+              Grid.Column="1"
+              Width="250"
+              HorizontalAlignment="Left"
+              Background="White" />
+
+            <Label
+              Grid.Row="2"
+              Grid.Column="0"
+              Content="Data Validade"
+              Foreground="Black" />
+            <StackPanel
+              Grid.Row="2"
+              Grid.Column="1"
+              Orientation="Horizontal"
+              Spacing="10">
+              <TextBox x:Name="DayTextBox" TextChanged="OnTwoDigitInput" />
+              <TextBox x:Name="MouthTextBox" TextChanged="OnTwoDigitInput" />
+              <TextBox x:Name="YearTextBox" TextChanged="OnThreeDigitInput" />
+            </StackPanel>
+
+            <Label
+              Grid.Row="3"
+              Grid.Column="0"
+              Content="Quantidade"
+              Foreground="Black" />
+            <TextBox
+              x:Name="AmountTextBox"
+              Grid.Row="3"
+              Grid.Column="1"
+              Width="55"
+              HorizontalAlignment="Left" />
+          </Grid>
+
+          <Button
+            Margin="0,15,0,0"
+            HorizontalAlignment="Left"
+            Background="#1a1a1a"
+            Click="OnSave_Click"
+            DockPanel.Dock="Bottom">
+            <PathIcon Data="{StaticResource save_as_regular}" Foreground="White" />
+          </Button>
+
+        </StackPanel>
+
+      </DockPanel>
+    </Border>
+  </Grid>
+</UserControl>

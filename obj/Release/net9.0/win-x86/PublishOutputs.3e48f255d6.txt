@@ -1,0 +1,5 @@
+/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x86/publish/PrazoCerto.pdb
+/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x86/publish/av_libglesv2.dll
+/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x86/publish/libHarfBuzzSharp.dll
+/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x86/publish/libSkiaSharp.dll
+/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x86/publish/PrazoCerto.exe
