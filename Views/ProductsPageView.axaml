@@ -202,6 +202,7 @@
                 FontWeight="Bold"
                 Foreground="Black" />
               <TextBox
+                Text="{Binding TextBoxNameText}"
                 x:Name="ProductNameTextBox"
                 Grid.Row="0"
                 Grid.Column="1"
@@ -209,19 +210,20 @@
                 Height="35"
                 HorizontalAlignment="Left"
                 Background="White"
+                BorderBrush="{Binding TextBoxNameBrush}"
                 CornerRadius="10"
                 FontFamily="Arial" />
 
 
               <!--  Fechar Popup  -->
               <Button
-                VerticalAlignment="Top"
                 Grid.Row="0"
                 Grid.Column="3"
+                VerticalAlignment="Top"
                 Background="#1a1a1a"
+                Command="{Binding ClosePopupCommand}"
                 Content="X"
-                Foreground="White"
-                Command="{Binding ClosePopupCommand}"/>
+                Foreground="White" />
 
 
               <Border
@@ -246,13 +248,13 @@
                 FontWeight="Bold"
                 Foreground="Black" />
               <TextBox
-                x:Name="CodeBarTextBox"
                 Grid.Row="1"
                 Grid.Column="1"
                 Width="240"
                 Height="35"
                 HorizontalAlignment="Left"
                 Background="White"
+                BorderBrush="{Binding TextBoxCodeBarBrush}"
                 CornerRadius="10" />
 
 
@@ -285,17 +287,17 @@
                 Spacing="10">
                 <!--  Dia  -->
                 <TextBox
-                  x:Name="DayTextBox"
+                  BorderBrush="{Binding TextBoxDayBrush}"
                   CornerRadius="10"
                   TextChanged="OnTwoDigitInput" />
                 <!--  Mês  -->
                 <TextBox
-                  x:Name="MouthTextBox"
+                  BorderBrush="{Binding TextBoxMouthBrush}"
                   CornerRadius="10"
                   TextChanged="OnTwoDigitInput" />
                 <!--  Ano  -->
                 <TextBox
-                  x:Name="YearTextBox"
+                  BorderBrush="{Binding TextBoxYearBrush}"
                   CornerRadius="10"
                   TextChanged="OnThreeDigitInput" />
               </StackPanel>
@@ -338,7 +340,6 @@
                 <Button
                   Margin="100,0,0,0"
                   Background="#1a1a1a"
-                  Click="OnSave_Click"
                   Content="Save"
                   Foreground="White" />
 

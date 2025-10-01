@@ -9,6 +9,7 @@ using System.Linq;
 using System;
 using Avalonia.Controls.Primitives;
 using System.Collections.Generic;
+using Avalonia.Media;
 
 namespace PrazoCerto.ViewModels;
 
@@ -19,9 +20,31 @@ public partial class ProductsPageViewModel : ViewModelBase
         ProductsList = new ObservableCollection<Product>(Products);
     }
 
+    // Armazena as caracteristicas do "Name" do popup
+    [ObservableProperty]
+    private IBrush _textBoxNameBrush = Brushes.DarkGray;
+    [ObservableProperty]
+    private string _textBoxNameText;
+
+    // Cor do brush do codigo de barras
+    [ObservableProperty]
+    private IBrush _textBoxCodeBarBrush = Brushes.DarkGray;
+
+    // Cor do brush do dia
+    [ObservableProperty]
+    private IBrush _textBoxDayBrush = Brushes.DarkGray;
+
+    // Cor do brush do mês
+    [ObservableProperty]
+    private IBrush _textBoxMouthBrush = Brushes.DarkGray;
+
+    // Cor do brush do ano
+    [ObservableProperty]
+    private IBrush _textBoxYearBrush = Brushes.DarkGray;
+
+    // Armazena qual produto está selecionado
     [ObservableProperty]
     private Product? _dataGrid_SelectedProduct;
-
 
     [ObservableProperty]
     private bool _isPopupOpen = false;
@@ -58,7 +81,7 @@ public partial class ProductsPageViewModel : ViewModelBase
 
     //botão de pesquisa
     [RelayCommand]
-    private void SearchButton() 
+    private void SearchButton()
     {
         if (ComboBox_SelectedItem != null && !string.IsNullOrEmpty(SearchTextBox))
         {
@@ -109,6 +132,7 @@ public partial class ProductsPageViewModel : ViewModelBase
     [RelayCommand]
     private void EditProduct()
     {
+        TextBoxNameText = DataGrid_SelectedProduct.Name;
         IsPopupOpen = true;
     }
 
@@ -117,6 +141,12 @@ public partial class ProductsPageViewModel : ViewModelBase
     private void ClosePopup()
     {
         IsPopupOpen = false;
+    }
+
+    [RelayCommand]
+    private void Save()
+    {
+        
     }
 }
 

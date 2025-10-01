@@ -19,7 +19,7 @@
         <Style Selector="TextBox">
             <Setter Property="Background" Value="White" />
             <Setter Property="Foreground" Value="Black" />
-            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderBrush" Value="DarkGray" />
         </Style>
 
         <Style Selector="DataGridRow">
