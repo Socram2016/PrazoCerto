@@ -4,13 +4,17 @@ public class ToCheck
 {
     public static bool IsInt(string number)
     {
-        if (Int64.TryParse(number, out _)) return true;
+        
+
+        if (Int32.TryParse(number, out _)) return true;
 
         return false;
     }
 
     public static bool IsFilled(params string[] args)
     {
+        // Return false if is not filled 
+
         bool isAllFilled = true;
 
         foreach (var arg in args)

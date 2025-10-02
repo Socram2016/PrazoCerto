@@ -136,17 +136,17 @@
             <TextBox
               x:Name="DayTextBox"
               CornerRadius="10"
-              TextChanged="OnTwoDigitInput" />
+              MaxLength="2"/>
             <!--  Mês  -->
             <TextBox
               x:Name="MouthTextBox"
               CornerRadius="10"
-              TextChanged="OnTwoDigitInput" />
+              MaxLength="2" />
             <!--  Ano  -->
             <TextBox
               x:Name="YearTextBox"
               CornerRadius="10"
-              TextChanged="OnThreeDigitInput" />
+              MaxLength="4" />
           </StackPanel>
 
           <!--  Quantidade  -->

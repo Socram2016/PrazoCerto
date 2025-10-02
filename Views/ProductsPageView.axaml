@@ -248,6 +248,7 @@
                 FontWeight="Bold"
                 Foreground="Black" />
               <TextBox
+                Text="{Binding TextBoxCodeBarText}"
                 Grid.Row="1"
                 Grid.Column="1"
                 Width="240"
@@ -287,19 +288,22 @@
                 Spacing="10">
                 <!--  Dia  -->
                 <TextBox
+                  Text="{Binding TextBoxDayText}"
                   BorderBrush="{Binding TextBoxDayBrush}"
                   CornerRadius="10"
-                  TextChanged="OnTwoDigitInput" />
+                  MaxLength="2" />
                 <!--  Mês  -->
                 <TextBox
-                  BorderBrush="{Binding TextBoxMouthBrush}"
+                  Text="{Binding TextBoxMonthText}"
+                  BorderBrush="{Binding TextBoxMonthBrush}"
                   CornerRadius="10"
-                  TextChanged="OnTwoDigitInput" />
+                  MaxLength="2"/>
                 <!--  Ano  -->
                 <TextBox
+                  Text="{Binding TextBoxYearText}"
                   BorderBrush="{Binding TextBoxYearBrush}"
                   CornerRadius="10"
-                  TextChanged="OnThreeDigitInput" />
+                  MaxLength="4" />
               </StackPanel>
 
 
@@ -330,7 +334,8 @@
                 Orientation="Horizontal">
 
                 <TextBox
-                  x:Name="AmountTextBox"
+                  Text="{Binding TextBoxAmountText}"
+                  BorderBrush="{Binding TextBoxAmountBrush}"
                   Width="55"
                   Height="35"
                   HorizontalAlignment="Left"
@@ -338,6 +343,7 @@
 
                 <!--  Botão de salvar  -->
                 <Button
+                 Command="{Binding SaveCommand}" 
                   Margin="100,0,0,0"
                   Background="#1a1a1a"
                   Content="Save"

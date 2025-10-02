@@ -16,28 +16,6 @@ public partial class AddProductPageView : UserControl
     }
 
 
-    // Set para apenas 2 digitos
-    private void OnTwoDigitInput(object sender, TextChangedEventArgs e)
-    {
-        var textBox = (TextBox)sender;
-
-        if (textBox.Text?.Length >= 2)
-        {
-            textBox.Text = textBox.Text[..2];
-        }
-    }
-
-    // Set para apenas 4 digitos
-    private void OnThreeDigitInput(object sender, TextChangedEventArgs e)
-    {
-        var textBox = (TextBox)sender;
-
-        if (textBox.Text?.Length >= 4)
-        {
-            textBox.Text = textBox.Text[..4];
-        }
-    }
-
     private void OnSave_Click(object sender, RoutedEventArgs e)
     {
         // Reset borders color

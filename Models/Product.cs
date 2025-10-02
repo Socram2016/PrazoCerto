@@ -56,7 +56,7 @@ public class Product : ObservableObject
     public Product(string name,
                    long codeBar,
                    DateTime expirationDate,
-                   int amount)
+                   int amount = 0)
     {
         _name = name;
         _codeBar = codeBar;
