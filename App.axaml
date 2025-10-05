@@ -26,5 +26,6 @@
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
+        
     </Application.Styles>
 </Application>

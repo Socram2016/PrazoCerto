@@ -1,42 +1,32 @@
 using System;
+using System.Linq;
 
-public class ToCheck
+namespace PrazoCerto.Models;
+
+public abstract class ToCheck
 {
-    public static bool IsInt(string number)
+    public static bool IsInt(string? number)
     {
+        return int.TryParse(number, out _);
+    }
+
+    public static bool IsAllFilled(params string[]? args)
+    {
+        return args != null && args.All(arg => !string.IsNullOrEmpty(arg));
+    }
+
+    public static bool IsValidCodeBar(string? codeBar)
+    {
+        return long.TryParse(codeBar, out _);
+    }
+
+    public static bool IsValidDate(string? day, string? month, string? year)
+    {
+        if (string.IsNullOrEmpty(day) || string.IsNullOrEmpty(month) || string.IsNullOrEmpty(year)) return false;
         
-
-        if (Int32.TryParse(number, out _)) return true;
-
-        return false;
-    }
-
-    public static bool IsFilled(params string[] args)
-    {
-        // Return false if is not filled 
-
-        bool isAllFilled = true;
-
-        foreach (var arg in args)
-        {
-            if (string.IsNullOrWhiteSpace(arg))
-            {
-                isAllFilled = false;
-                break;
-            }
-        }
-
-        return isAllFilled;
-    }
-
-    public static bool IsValidCodeBar(string codeBar)
-    {
-        return Int64.TryParse(codeBar, out _);
-    }
-
-    public static bool IsValidDate(string day, string month, string year)
-    {
-        string dateString = $"{year}-{month}-{day}";
+        
+        var dateString = $"{year}-{month}-{day}";
         return DateTime.TryParse(dateString, out _);
     }
+    
 }

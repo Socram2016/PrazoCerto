@@ -106,7 +106,7 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
             ExpiredProducts.Remove(DataGrid_SelectedProduct);
 
             string strToJson = JsonConvert.SerializeObject(Products, Formatting.Indented);
-            File.WriteAllText(configFilePath, strToJson);
+            File.WriteAllText(ConfigFilePath, strToJson);
         }
     }
 }

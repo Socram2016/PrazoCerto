@@ -1,9 +1,16 @@
 [
   {
     "TimeRemaining": "Vencido",
-    "Name": "TOMATE AMARELO",
+    "Name": "BATATA NADADORA",
+    "CodeBar": 12345789,
+    "ExpirationDate": "2025-02-03T00:00:00",
+    "Amount": 36
+  },
+  {
+    "TimeRemaining": "Vencido",
+    "Name": "CACHORRO FRIO",
     "CodeBar": 1234567890123,
-    "ExpirationDate": "1998-12-10T00:00:00",
-    "Amount": 85
+    "ExpirationDate": "1999-12-10T00:00:00",
+    "Amount": 39
   }
 ]

@@ -239,3 +239,4 @@
 /home/marcos/Documentos/PrazoCerto/obj/Release/net9.0/linux-x64/refint/PrazoCerto.dll
 /home/marcos/Documentos/PrazoCerto/obj/Release/net9.0/linux-x64/PrazoCerto.pdb
 /home/marcos/Documentos/PrazoCerto/obj/Release/net9.0/linux-x64/ref/PrazoCerto.dll
+/home/marcos/Documentos/PrazoCerto/obj/Release/net9.0/linux-x64/PrazoCerto.sourcelink.json
