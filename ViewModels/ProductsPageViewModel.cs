@@ -17,8 +17,7 @@ public partial class ProductsPageViewModel : ViewModelBase
     {
         if (Products != null )ProductsList = new ObservableCollection<Product>(Products);
     }
-    
-    // Armazena qual produto está selecionado
+
     [ObservableProperty] private Product? _dataGridSelectedProduct;
 
     [ObservableProperty] private bool _isPopupOpen;
@@ -136,6 +135,8 @@ public partial class ProductsPageViewModel : ViewModelBase
             ConfigFilePath);
         UpdateProducts();
         if (Products != null) ProductsList = new ObservableCollection<Product>(Products);
+        
+        Notification();
         IsPopupOpen = !IsPopupOpen;
     }
 }

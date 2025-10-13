@@ -10,11 +10,13 @@
   d:DesignWidth="800"
   x:DataType="vm:ProductsPageViewModel"
   mc:Ignorable="d">
-
+  
   <Design.DataContext>
     <vm:ProductsPageViewModel/>
   </Design.DataContext>
-
+  
+  
+  
   <Grid Margin="15" RowDefinitions="Auto, *">
 
     <StackPanel
@@ -22,6 +24,7 @@
       Orientation="Vertical"
       Spacing="10">
       <!--  Logo  -->
+      
       <Image
         Width="250"
         Margin="0,0,0,10"
@@ -30,19 +33,21 @@
 
     </StackPanel>
 
-    <!--  Borda Cinza  -->
+    <!--  Gray Border  -->
     <Border
       x:Name="MyBorder"
       Grid.Row="1"
       Padding="15"
       Background="DarkGray"
       CornerRadius="15,15,0,0">
-
+      
+      
+      
       <StackPanel Orientation="Vertical" Spacing="15">
-
+        
         <StackPanel Orientation="Horizontal">
 
-          <!--  ComboBox de seleção da pesquisa  -->
+          <!--  Search Selection ComboBox  -->
           <ComboBox
             Width="100"
             Margin="10,0,0,0"
@@ -62,7 +67,7 @@
             Text="{Binding SearchTextBox, Mode=TwoWay}"
             Watermark="Pesquisar" />
 
-          <!--  Botão de pesquisa  -->
+          <!--  Search Button -->
           <Button
             Margin="5,0,0,0"
             Background="#1a1a1a"
@@ -70,7 +75,7 @@
             Content="pesquisar"
             Foreground="White" />
 
-          <!--  Limpa a seleção e barra de pesquisa  -->
+          <!-- Clear selected search and search bar -->
           <Button
             Margin="5,0,0,0"
             Background="#1a1a1a"
@@ -78,7 +83,7 @@
             Content="Limpar"
             Foreground="White" />
 
-          <!--  Botão de editar  -->
+          <!--  Edit Button -->
           <Button
             Width="30"
             Height="30"
@@ -91,7 +96,7 @@
             <PathIcon Data="{StaticResource pencil_regular}" Foreground="White" />
           </Button>
 
-          <!--  Remove itens  -->
+          <!--  Remove items  -->
           <Button
             Width="30"
             Height="30"
@@ -103,14 +108,15 @@
             Command="{Binding RemoveProductCommand}"
             Foreground="White"
             ToolTip.Tip="Deletar">
-            <PathIcon Data="{StaticResource trahscan_regular}" Foreground="White" />
+            <PathIcon Data="{StaticResource trashcan_regular}" Foreground="White" />
           </Button>
 
         </StackPanel>
 
 
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-
+          
+          <!-- Products Data grid -->
           <DataGrid
             x:Name="MyDataGrid"
             Margin="10,0,0,0"
@@ -135,7 +141,7 @@
               <DataGridTextColumn
                 Width="Auto"
                 Binding="{Binding CodeBar}"
-                Header="Codigo de Barras" />
+                Header="Código de Barras" />
               <DataGridTextColumn
                 Width="Auto"
                 Binding="{Binding ExpirationDate, StringFormat='{}{0:d}'}"
@@ -151,23 +157,29 @@
             </DataGrid.Columns>
           </DataGrid>
         </ScrollViewer>
-
-        <!--  Popup  -->
+        
+        <!-- Save notification popup -->
+        <views:NotificationPopupView HorizontalAlignment="Center"></views:NotificationPopupView>
+        
+        
+        <!--  Edit product Popup  -->
         <Popup
           IsOpen="{Binding IsPopupOpen}"
           Placement="AnchorAndGravity"
           PlacementTarget="{Binding $parent[Window]}">
-
+          
           <Border
             Padding="15"
             Background="Gray"
             BorderBrush="Black"
             BorderThickness="1"
             CornerRadius="15">
-            <StackPanel Orientation="Horizontal">
-            <views:ProductFormField/>
             
-            <Grid RowDefinitions="*,*">
+            <StackPanel Orientation="Horizontal">
+              <!-- Product Form Field -->
+              <views:ProductFormField/>
+
+              <Grid RowDefinitions="*,*">
               <Button
                 Grid.Row="0" 
                 Content="X" 
@@ -180,15 +192,10 @@
                   Foreground="White"/>
               </Button>
             </Grid>
-            
             </StackPanel>
           </Border>
         </Popup>
-
       </StackPanel>
-
-
     </Border>
   </Grid>
-
 </UserControl>

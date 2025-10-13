@@ -33,23 +33,83 @@
       Background="DarkGray"
       CornerRadius="15,15,0,0">
 
-
-      <StackPanel>
+      <Grid ColumnDefinitions="Auto,*">
         
-        <!-- ImportProductFormField -->
-        <views:ProductFormField/>
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+        
+          <!-- ImportProductFormField -->
+          <views:ProductFormField/>
 
-        <!--  Button Save  -->
-        <Button
-          Margin="0,15,0,0"
-          HorizontalAlignment="Left"
-          Background="#1a1a1a"
-          Command="{Binding SaveButtonCommand}">
-          <PathIcon Data="{StaticResource save_as_regular}" Foreground="White" />
-        </Button>
+          <!--  Button Save  -->
+          <Button
+            Margin="0,15,0,0"
+            HorizontalAlignment="Left"
+            Background="#1a1a1a"
+            Command="{Binding SaveButtonCommand}">
+            <PathIcon Data="{StaticResource save_as_regular}" Foreground="White" />
+          </Button>
+          
+          
 
-      </StackPanel>
+        </StackPanel>
+        
+        <!-- Notification -->
+        <views:NotificationPopupView Grid.Column="0" />
 
+        <!--Sync List-->
+        <Border 
+          Grid.Column="1"
+          CornerRadius="15"
+          BorderThickness="1" 
+          BorderBrush="Black" 
+          HorizontalAlignment="Center" >
+          
+          <StackPanel 
+            Margin="15" 
+            Spacing="5"  
+            Orientation="Vertical" 
+            HorizontalAlignment="Center">
+          
+            <TextBlock 
+              FontWeight="Bold" 
+              Margin="0,0,0,10"
+              Foreground="Black"
+              Text="Sincronizar" />
+
+            <ListBox  
+              Background="DarkGray"
+              ItemsSource="{Binding SyncItems}">
+              
+              <ListBox.Styles>
+                <Style Selector="ListBoxItem">
+                  <Setter Property="Background" Value="White"></Setter>
+                  <Setter Property="Margin" Value="5"></Setter>
+                  <Setter Property="CornerRadius" Value="5"></Setter>
+                  <Setter Property="Height" Value="35"></Setter>
+                  <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                  <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                </Style>
+                <Style Selector="ListBoxItem.On"></Style>
+              </ListBox.Styles>
+              
+              <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type vm:SyncItemTemplate}">
+                  <StackPanel 
+                    Orientation="Horizontal"
+                    Spacing="10">
+                    <TextBlock 
+                      Foreground="Black"
+                      Text="{Binding Label}" />
+                  </StackPanel>
+                </DataTemplate>
+              </ListBox.ItemTemplate>
+              
+            </ListBox>
+            
+          </StackPanel> 
+        </Border>
+      </Grid>
     </Border>
   </Grid>
+  
 </UserControl>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading.Tasks;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
@@ -12,6 +13,7 @@ public abstract partial class ViewModelBase : ObservableObject
 {
     // Texts
     //================================================
+    [ObservableProperty] private string _newNotice = string.Empty;
     [ObservableProperty] private string _newProductName = string.Empty;
     [ObservableProperty] private string _newProductCodeBar = string.Empty;
     [ObservableProperty] private string _newProductDay = string.Empty;
@@ -22,6 +24,7 @@ public abstract partial class ViewModelBase : ObservableObject
     
     // Brushs
     //================================================
+    [ObservableProperty] private IBrush _newNoticeBrush = Brushes.Black;
     [ObservableProperty] private IBrush _newProductNameBrush = Brushes.Black;
     [ObservableProperty] private IBrush _newProductCodeBarBrush = Brushes.Black;
     [ObservableProperty] private IBrush _newProductDayBrush = Brushes.Black;
@@ -29,6 +32,9 @@ public abstract partial class ViewModelBase : ObservableObject
     [ObservableProperty] private IBrush _newProductYearBrush = Brushes.Black;
     [ObservableProperty] private IBrush _newProductAmountBrush = Brushes.Black;
     //================================================
+
+    [ObservableProperty] private bool _notificationPopup = false;
+    [ObservableProperty] private double _notificationOpacity = 0.0;
     
     // Get JsonProducts path
     protected readonly string ConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProductsDatabase.json");
@@ -51,7 +57,7 @@ public abstract partial class ViewModelBase : ObservableObject
             File.WriteAllText(ConfigFilePath, "[]");
 
         var stringFromJson = File.ReadAllText(ConfigFilePath);
-        Products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(stringFromJson) ?? new ObservableCollection<Product>();
+        Products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(stringFromJson) ?? [];
     }
 
     protected bool ValidateForm()
@@ -69,20 +75,24 @@ public abstract partial class ViewModelBase : ObservableObject
             () => NewProductNameBrush = Brushes.Red);
         
         // Check if day is filled
-        var dayError = string.IsNullOrEmpty(NewProductDay)
-                         || !int.TryParse(NewProductDay, out _);
+        var dayError = string.IsNullOrEmpty(NewProductDay) ||
+                       !int.TryParse(NewProductDay, out var day) ||
+                       !DateTime.TryParse($"{day}/{01}/{2025}",out _);
         CheckFields(dayError, ref invalidForm, 
             () => NewProductDayBrush = Brushes.Red);
         
         // Check if month is filled
-        var monthError = string.IsNullOrEmpty(NewProductMonth)
-                             || !int.TryParse(NewProductMonth, out _);
+        var monthError = string.IsNullOrEmpty(NewProductMonth) ||
+                         !int.TryParse(NewProductMonth, out var month) ||
+                         !DateTime.TryParse($"{01}/{month}/{2025}",out _);
         CheckFields(monthError, ref invalidForm, 
             () => NewProductMonthBrush = Brushes.Red);
         
         // Check if year is filled
-        var yearError = string.IsNullOrEmpty(NewProductYear)
-                       || !int.TryParse(NewProductYear, out _);
+        var yearError = string.IsNullOrEmpty(NewProductYear) ||
+                        !int.TryParse(NewProductYear, out var year) ||
+                        !DateTime.TryParse($"{01}/{01}/{year}",out _);
+        
         CheckFields(yearError, ref invalidForm, 
             () => NewProductYearBrush = Brushes.Red);
 
@@ -116,6 +126,7 @@ public abstract partial class ViewModelBase : ObservableObject
         NewProductAmount = "";
     }
 
+    // Reset brushes
     protected void ResetBrushes()
     {
         IBrush corPadrão = Brushes.Black;
@@ -137,6 +148,7 @@ public abstract partial class ViewModelBase : ObservableObject
         invalidForm = true;
     }
 
+    // remove item
     public void RemoveItem(Product dataGridSelectedProduct)
     {
         Products?.Remove(dataGridSelectedProduct);
@@ -150,6 +162,14 @@ public abstract partial class ViewModelBase : ObservableObject
         Products?.Clear();
         Products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(stringFromJson);
     }
-    
-    
+
+    public async Task Notification()
+    {
+        NotificationPopup = true;
+        NotificationOpacity = 1.0;
+        await Task.Delay(1000);
+        NotificationOpacity = 0.0;
+        await Task.Delay(1000);
+        NotificationPopup = false;
+    }
 }

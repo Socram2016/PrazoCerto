@@ -403,6 +403,15 @@
           }
         }
       },
+      "FirebirdSql.Data.FirebirdClient/10.3.3": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        }
+      },
       "HarfBuzzSharp/8.3.1.1": {
         "type": "package",
         "dependencies": {
@@ -1368,6 +1377,27 @@
         "logo.png"
       ]
     },
+    "FirebirdSql.Data.FirebirdClient/10.3.3": {
+      "sha512": "iAj21eY5u7obZumA3NAVZf8ynu7Z6lslkU3V4W8Mm9Mowa4gcadT2a+LIMwAovDIg8iS8RpCSzIzFdKFCdakTg==",
+      "type": "package",
+      "path": "firebirdsql.data.firebirdclient/10.3.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "firebird-logo.png",
+        "firebirdsql.data.firebirdclient.10.3.3.nupkg.sha512",
+        "firebirdsql.data.firebirdclient.nuspec",
+        "lib/net48/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/net5.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/net6.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/net7.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/net8.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/netstandard2.1/FirebirdSql.Data.FirebirdClient.dll",
+        "license.txt"
+      ]
+    },
     "HarfBuzzSharp/8.3.1.1": {
       "sha512": "tLZN66oe/uiRPTZfrCU4i8ScVGwqHNh5MHrXj0yVf4l7Mz0FhTGnQ71RGySROTmdognAs0JtluHkL41pIabWuQ==",
       "type": "package",
@@ -2100,6 +2130,7 @@
       "Avalonia.Fonts.Inter >= 11.3.6",
       "Avalonia.Themes.Fluent >= 11.3.6",
       "CommunityToolkit.Mvvm >= 8.2.1",
+      "FirebirdSql.Data.FirebirdClient >= 10.3.3",
       "Newtonsoft.Json >= 13.0.4",
       "Packaging.Targets >= 0.1.232-*",
       "ReactiveUI >= 21.0.1"
@@ -2180,6 +2211,10 @@
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.2.1, )"
+          },
+          "FirebirdSql.Data.FirebirdClient": {
+            "target": "Package",
+            "version": "[10.3.3, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",

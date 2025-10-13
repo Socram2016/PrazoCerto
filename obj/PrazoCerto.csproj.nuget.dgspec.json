@@ -77,6 +77,10 @@
               "target": "Package",
               "version": "[8.2.1, )"
             },
+            "FirebirdSql.Data.FirebirdClient": {
+              "target": "Package",
+              "version": "[10.3.3, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.4, )"

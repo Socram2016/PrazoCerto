@@ -91,7 +91,7 @@
             Command="{Binding RemoveProductCommand}"
             Foreground="White"
             ToolTip.Tip="Deletar">
-            <PathIcon Data="{StaticResource trahscan_regular}" Foreground="White" />
+            <PathIcon Data="{StaticResource trashcan_regular}" Foreground="White" />
           </Button>
 
         </StackPanel>

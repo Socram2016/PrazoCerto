@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Tz+ekv3gPxc=",
+  "dgSpecHash": "1F54C/s93i0=",
   "success": true,
   "projectFilePath": "/home/marcos/Documentos/PrazoCerto/PrazoCerto.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "/home/marcos/.nuget/packages/avalonia.x11/11.3.6/avalonia.x11.11.3.6.nupkg.sha512",
     "/home/marcos/.nuget/packages/communitytoolkit.mvvm/8.2.1/communitytoolkit.mvvm.8.2.1.nupkg.sha512",
     "/home/marcos/.nuget/packages/dynamicdata/9.4.1/dynamicdata.9.4.1.nupkg.sha512",
+    "/home/marcos/.nuget/packages/firebirdsql.data.firebirdclient/10.3.3/firebirdsql.data.firebirdclient.10.3.3.nupkg.sha512",
     "/home/marcos/.nuget/packages/harfbuzzsharp/8.3.1.1/harfbuzzsharp.8.3.1.1.nupkg.sha512",
     "/home/marcos/.nuget/packages/harfbuzzsharp.nativeassets.linux/8.3.1.1/harfbuzzsharp.nativeassets.linux.8.3.1.1.nupkg.sha512",
     "/home/marcos/.nuget/packages/harfbuzzsharp.nativeassets.macos/8.3.1.1/harfbuzzsharp.nativeassets.macos.8.3.1.1.nupkg.sha512",
