@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="App.axaml" value="PrazoCerto.csproj" />
+        <entry key="Assets/Styles.axaml" value="PrazoCerto.csproj" />
+        <entry key="NotificationPopup.axaml" value="PrazoCerto.csproj" />
+        <entry key="ViewModels/ConfigPageView.axaml" value="PrazoCerto.csproj" />
+        <entry key="Views/AddProductPageView.axaml" value="PrazoCerto.csproj" />
+        <entry key="Views/BottomNotificationPopupView.axaml" value="PrazoCerto.csproj" />
+        <entry key="Views/ConfigPageView.axaml" value="PrazoCerto.csproj" />
+        <entry key="Views/ExpiredProductPageView.axaml" value="PrazoCerto.csproj" />
+        <entry key="Views/MainWindow.axaml" value="PrazoCerto.csproj" />
+        <entry key="Views/NotificationPopup.axaml" value="PrazoCerto.csproj" />
+        <entry key="Views/NotificationPopupView.axaml" value="PrazoCerto.csproj" />
+        <entry key="Views/ProductFormField.axaml" value="PrazoCerto.csproj" />
+        <entry key="Views/ProductsPageView.axaml" value="PrazoCerto.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
