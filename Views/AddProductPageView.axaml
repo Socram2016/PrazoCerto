@@ -48,13 +48,10 @@
             Command="{Binding SaveButtonCommand}">
             <PathIcon Data="{StaticResource save_as_regular}" Foreground="White" />
           </Button>
-          
-          
 
         </StackPanel>
-        
         <!-- Notification -->
-        <views:NotificationPopupView Grid.Column="0" />
+        <views:BottomNotificationPopupView Grid.Column="0" />
 
         <!--Sync List-->
         <Border 

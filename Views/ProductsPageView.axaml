@@ -159,7 +159,7 @@
         </ScrollViewer>
         
         <!-- Save notification popup -->
-        <views:NotificationPopupView HorizontalAlignment="Center"></views:NotificationPopupView>
+        <views:BottomNotificationPopupView HorizontalAlignment="Center"></views:BottomNotificationPopupView>
         
         
         <!--  Edit product Popup  -->
@@ -180,12 +180,13 @@
               <views:ProductFormField/>
 
               <Grid RowDefinitions="*,*">
-              <Button
-                Grid.Row="0" 
-                Content="X" 
-                VerticalAlignment="Top" 
-                Command="{Binding ClosePopUpCommand}"/>
-              
+                <!-- Close Button -->
+                <Button
+                  Grid.Row="0" 
+                  Content="X" 
+                  VerticalAlignment="Top" 
+                  Command="{Binding ClosePopUpCommand}"/>
+                <!-- Save Button -->
               <Button Grid.Row="1" VerticalAlignment="Bottom" Command="{Binding SaveProductCommand}">
                 <PathIcon 
                   Data="{StaticResource save_as_regular}" 

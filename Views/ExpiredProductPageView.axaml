@@ -52,7 +52,7 @@
             Background="#1a1a1a"
             Foreground="White"
             SelectedIndex="0"
-            SelectedItem="{Binding ComboBox_SelectedItem}">
+            SelectedItem="{Binding ComboBoxSelectedItem}">
 
             <ComboBoxItem Content="Nome" Tag="Name" />
             <ComboBoxItem Content="Codigo" Tag="CodeBar" />
@@ -110,7 +110,7 @@
           GridLinesVisibility="All"
           IsReadOnly="True"
           ItemsSource="{Binding ExpiredProducts, Mode=TwoWay}"
-          SelectedItem="{Binding DataGrid_SelectedProduct}">
+          SelectedItem="{Binding DataGridSelectedProduct}">
 
           <DataGrid.Columns>
 

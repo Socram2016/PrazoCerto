@@ -1,0 +1,49 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:PrazoCerto.ViewModels"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+    x:Class="PrazoCerto.Views.BottomNotificationPopupView"
+    x:DataType="vm:BottomNotificationPopupViewModel">
+    
+    <Design.DataContext>
+        <vm:BottomNotificationPopupViewModel />
+    </Design.DataContext>
+    
+    <UserControl.Styles>
+        <Style Selector="Border">
+            <Setter Property="Opacity" Value="0.0" />
+        </Style>
+    </UserControl.Styles>
+    
+    <StackPanel>
+        <Popup
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            VerticalOffset="-20"
+            Placement="Bottom"
+            PlacementAnchor="{Binding $parent[WindowBase]}"
+            IsOpen="{Binding NotificationPopup}">
+            
+            <Border 
+            
+                BorderThickness="1"
+                Background="LightSlateGray"
+                CornerRadius="10"
+                Opacity="{Binding NotificationOpacity}">
+                <Border.Transitions>
+                    <Transitions>
+                        <DoubleTransition Property="Opacity" Duration="0:0:0.5"></DoubleTransition>
+                    </Transitions>
+                </Border.Transitions>
+                <TextBlock Margin="5" FontWeight="Bold" FontSize="16" Text="Salvo"></TextBlock>
+            </Border>
+            
+        </Popup>
+    </StackPanel>
+    
+    
+    
+</UserControl>

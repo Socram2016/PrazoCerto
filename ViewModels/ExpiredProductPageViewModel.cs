@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -23,7 +22,7 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
     }
     
     [ObservableProperty]
-    private Product? _dataGrid_SelectedProduct;
+    private Product? _dataGridSelectedProduct;
 
     [ObservableProperty]
     private string _numberOfProducts;
@@ -35,16 +34,16 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
         set => SetProperty(ref _expiredProducts, value);
     }
 
-    private ComboBoxItem? _comboBox_SelectedItem; // combobox
-    public ComboBoxItem? ComboBox_SelectedItem
+    private ComboBoxItem? _comboBoxSelectedItem; // combobox
+    public ComboBoxItem? ComboBoxSelectedItem
     {
-        get => _comboBox_SelectedItem;
+        get => _comboBoxSelectedItem;
 
         set
         {
             if (value != null)
             {
-                SetProperty(ref _comboBox_SelectedItem, value);
+                SetProperty(ref _comboBoxSelectedItem, value);
             }
         }
     }
@@ -66,12 +65,12 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
     [RelayCommand]
     private void SearchButton() 
     {
-        if (ComboBox_SelectedItem != null && !string.IsNullOrEmpty(SearchTextBox))
+        if (ComboBoxSelectedItem != null && !string.IsNullOrEmpty(SearchTextBox))
         {
             var tempList = new List<Product>();
-            if (ComboBox_SelectedItem.Tag != null)
+            if (ComboBoxSelectedItem.Tag != null)
             {
-                switch (ComboBox_SelectedItem.Tag)
+                switch (ComboBoxSelectedItem.Tag)
                 {
                     case "Name":
                         tempList = Products.Where(x => x.Name.Contains(SearchTextBox.ToUpper())).ToList();
@@ -100,10 +99,10 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
     [RelayCommand]
     private void RemoveProduct()
     {
-        if (DataGrid_SelectedProduct != null)
+        if (DataGridSelectedProduct != null)
         {
-            Products.Remove(DataGrid_SelectedProduct);
-            ExpiredProducts.Remove(DataGrid_SelectedProduct);
+            Products.Remove(DataGridSelectedProduct);
+            ExpiredProducts.Remove(DataGridSelectedProduct);
 
             string strToJson = JsonConvert.SerializeObject(Products, Formatting.Indented);
             File.WriteAllText(ConfigFilePath, strToJson);

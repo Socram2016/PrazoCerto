@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace PrazoCerto.Views;
 
-public partial class NotificationPopupView : UserControl
+public partial class ConfigPageView : UserControl
 {
-    public NotificationPopupView()
+    public ConfigPageView()
     {
         InitializeComponent();
     }

@@ -241,3 +241,4 @@
 /home/marcos/Documentos/PrazoCerto/obj/Release/net9.0/win-x64/PrazoCerto.pdb
 /home/marcos/Documentos/PrazoCerto/obj/Release/net9.0/win-x64/ref/PrazoCerto.dll
 /home/marcos/Documentos/PrazoCerto/obj/Release/net9.0/win-x64/PrazoCerto.sourcelink.json
+/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/FirebirdSql.Data.FirebirdClient.dll

@@ -30,10 +30,22 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [/home/marcos/Documentos/PrazoCerto/Views/AddProductPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/marcos/Documentos/PrazoCerto/Views/HomePageView.axaml]
+[/home/marcos/Documentos/PrazoCerto/Views/BottomNotificationPopupView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/marcos/Documentos/PrazoCerto/Views/ConfigPageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/marcos/Documentos/PrazoCerto/Views/ExpiredProductPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/home/marcos/Documentos/PrazoCerto/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/marcos/Documentos/PrazoCerto/Views/NotificationPopupView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/marcos/Documentos/PrazoCerto/Views/ProductFormField.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/home/marcos/Documentos/PrazoCerto/Views/ProductsPageView.axaml]

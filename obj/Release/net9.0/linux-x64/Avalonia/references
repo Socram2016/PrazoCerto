@@ -24,6 +24,7 @@
 /home/marcos/.nuget/packages/avalonia.x11/11.3.6/lib/net8.0/Avalonia.X11.dll
 /home/marcos/.nuget/packages/communitytoolkit.mvvm/8.2.1/lib/net6.0/CommunityToolkit.Mvvm.dll
 /home/marcos/.nuget/packages/dynamicdata/9.4.1/lib/net9.0/DynamicData.dll
+/home/marcos/.nuget/packages/firebirdsql.data.firebirdclient/10.3.3/lib/net8.0/FirebirdSql.Data.FirebirdClient.dll
 /home/marcos/.nuget/packages/harfbuzzsharp/8.3.1.1/lib/net8.0/HarfBuzzSharp.dll
 /home/marcos/.nuget/packages/microcom.runtime/0.11.0/lib/net5.0/MicroCom.Runtime.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/Microsoft.CSharp.dll

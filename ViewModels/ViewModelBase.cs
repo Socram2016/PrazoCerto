@@ -9,11 +9,10 @@ using PrazoCerto.Models;
 
 namespace PrazoCerto.ViewModels;
 
-public abstract partial class ViewModelBase : ObservableObject
+public partial class ViewModelBase : ObservableObject
 {
     // Texts
     //================================================
-    [ObservableProperty] private string _newNotice = string.Empty;
     [ObservableProperty] private string _newProductName = string.Empty;
     [ObservableProperty] private string _newProductCodeBar = string.Empty;
     [ObservableProperty] private string _newProductDay = string.Empty;
@@ -24,7 +23,6 @@ public abstract partial class ViewModelBase : ObservableObject
     
     // Brushs
     //================================================
-    [ObservableProperty] private IBrush _newNoticeBrush = Brushes.Black;
     [ObservableProperty] private IBrush _newProductNameBrush = Brushes.Black;
     [ObservableProperty] private IBrush _newProductCodeBarBrush = Brushes.Black;
     [ObservableProperty] private IBrush _newProductDayBrush = Brushes.Black;
@@ -33,11 +31,13 @@ public abstract partial class ViewModelBase : ObservableObject
     [ObservableProperty] private IBrush _newProductAmountBrush = Brushes.Black;
     //================================================
 
-    [ObservableProperty] private bool _notificationPopup = false;
-    [ObservableProperty] private double _notificationOpacity = 0.0;
+    [ObservableProperty] private bool _notificationPopup;
+    [ObservableProperty] private double _notificationOpacity;
+    [ObservableProperty] private int _configToExpirationNotif;
     
     // Get JsonProducts path
     protected readonly string ConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProductsDatabase.json");
+    protected readonly string ProgramConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs");
 
     // Store current page
     [ObservableProperty]

@@ -11,15 +11,11 @@ namespace PrazoCerto.ViewModels
     public partial class MainWindowViewModel : ViewModelBase
     {
         [ObservableProperty]
-        private string _texto = "PrazoCerto";
-
-        [ObservableProperty]
         private ListItemTemplate? _selectedListItem;
-
         
 
         [ObservableProperty]
-        private bool _isPaneOpen = false;
+        private bool _isPaneOpen;
 
         [RelayCommand]
         private void OpenPane()
@@ -27,17 +23,18 @@ namespace PrazoCerto.ViewModels
             IsPaneOpen = !IsPaneOpen;
         }
 
-        public ObservableCollection<ListItemTemplate> Items { get; } = new()
-        {
-            new ListItemTemplate(typeof(AddProductPageViewModel), iconKey: "add_square_regular", label: "Adicionar Produto"),
-            new ListItemTemplate(typeof(ExpiredProductPageViewModel), iconKey: "clock_regular", label: "Produtos Vencidos"),
-            new ListItemTemplate(typeof(ProductsPageViewModel), iconKey: "bag_2d_regular", label: "Lista de Produtos")
-        };
+        public ObservableCollection<ListItemTemplate> Items { get; } =
+        [
+            new (typeof(AddProductPageViewModel), iconKey: "add_square_regular", label: "Adicionar Produto"),
+            new (typeof(ExpiredProductPageViewModel), iconKey: "clock_regular", label: "Produtos Vencidos"),
+            new (typeof(ProductsPageViewModel), iconKey: "bag_2d_regular", label: "Lista de Produtos"),
+            new (typeof(ConfigPageViewModel), iconKey: "Gear_regular", label: "Configurações")
+        ];
 
         partial void OnSelectedListItemChanged(ListItemTemplate? value)
         {
-            if (value is null || value.modelType is null) return;
-            var instance = Activator.CreateInstance(value.modelType);
+            if (value is null || value.ModelType is null) return;
+            var instance = Activator.CreateInstance(value.ModelType);
             if (instance == null) return;
             CurrentPage = (ViewModelBase)instance;
         }
@@ -55,12 +52,12 @@ namespace PrazoCerto.ViewModels
     {
         public StreamGeometry? ListItemIcon { get; }
         public string? Label { get; }
-        public Type? modelType { get; }
+        public Type? ModelType { get; }
 
         public ListItemTemplate(Type? type, string? label, string? iconKey)
         {
             Label = label;
-            modelType = type;
+            ModelType = type;
 
             StreamGeometry? geometry = null;
             if (iconKey != null && Application.Current != null && Application.Current.TryFindResource(iconKey, out var icon))

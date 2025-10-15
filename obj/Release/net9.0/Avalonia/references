@@ -1,3 +1,5 @@
+/home/marcos/.nuget/packages/animatedimage.avalonia/2.1.0/lib/net9.0/AnimatedImage.Avalonia.dll
+/home/marcos/.nuget/packages/animatedimage/2.1.0/lib/net9.0/AnimatedImage.dll
 /home/marcos/.nuget/packages/avalonia/11.3.6/ref/net8.0/Avalonia.Base.dll
 /home/marcos/.nuget/packages/avalonia.controls.datagrid/11.3.6/lib/net8.0/Avalonia.Controls.DataGrid.dll
 /home/marcos/.nuget/packages/avalonia/11.3.6/ref/net8.0/Avalonia.Controls.dll
@@ -21,6 +23,8 @@
 /home/marcos/.nuget/packages/avalonia.win32/11.3.6/lib/net8.0/Avalonia.Win32.dll
 /home/marcos/.nuget/packages/avalonia.x11/11.3.6/lib/net8.0/Avalonia.X11.dll
 /home/marcos/.nuget/packages/communitytoolkit.mvvm/8.2.1/lib/net6.0/CommunityToolkit.Mvvm.dll
+/home/marcos/.nuget/packages/dynamicdata/9.4.1/lib/net9.0/DynamicData.dll
+/home/marcos/.nuget/packages/firebirdsql.data.firebirdclient/10.3.3/lib/net8.0/FirebirdSql.Data.FirebirdClient.dll
 /home/marcos/.nuget/packages/harfbuzzsharp/8.3.1.1/lib/net8.0/HarfBuzzSharp.dll
 /home/marcos/.nuget/packages/microcom.runtime/0.11.0/lib/net5.0/MicroCom.Runtime.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/Microsoft.CSharp.dll
@@ -31,7 +35,12 @@
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/mscorlib.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/netstandard.dll
 /home/marcos/.nuget/packages/newtonsoft.json/13.0.4/lib/net6.0/Newtonsoft.Json.dll
+/home/marcos/.nuget/packages/reactiveui/21.0.1/lib/net9.0/ReactiveUI.dll
 /home/marcos/.nuget/packages/skiasharp/2.88.9/lib/net6.0/SkiaSharp.dll
+/home/marcos/.nuget/packages/splat.builder/16.1.1/lib/net9.0/Splat.Builder.dll
+/home/marcos/.nuget/packages/splat.core/16.1.1/lib/net9.0/Splat.Core.dll
+/home/marcos/.nuget/packages/splat/16.1.1/lib/net9.0/Splat.dll
+/home/marcos/.nuget/packages/splat.logging/16.1.1/lib/net9.0/Splat.Logging.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/System.AppContext.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/System.Buffers.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/System.Collections.Concurrent.dll
@@ -113,6 +122,7 @@
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/System.Numerics.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/System.Numerics.Vectors.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/System.ObjectModel.dll
+/home/marcos/.nuget/packages/system.reactive/6.0.2/lib/net6.0/System.Reactive.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/System.Reflection.DispatchProxy.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/System.Reflection.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/System.Reflection.Emit.dll

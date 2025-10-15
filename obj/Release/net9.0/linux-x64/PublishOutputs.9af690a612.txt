@@ -212,6 +212,7 @@
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/linux-x64/publish/Avalonia.X11.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/linux-x64/publish/CommunityToolkit.Mvvm.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/linux-x64/publish/DynamicData.dll
+/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/linux-x64/publish/FirebirdSql.Data.FirebirdClient.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/linux-x64/publish/HarfBuzzSharp.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/linux-x64/publish/MicroCom.Runtime.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/linux-x64/publish/Newtonsoft.Json.dll
