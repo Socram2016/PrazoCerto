@@ -144,12 +144,12 @@
           "Avalonia.Remote.Protocol": "11.3.6"
         },
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/Avalonia.Controls.ColorPicker.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/Avalonia.Controls.ColorPicker.dll": {
             "related": ".xml"
           }
         }
@@ -198,12 +198,12 @@
           "Avalonia.Themes.Simple": "11.3.6"
         },
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/Avalonia.Diagnostics.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/Avalonia.Diagnostics.dll": {
             "related": ".xml"
           }
         }
@@ -320,12 +320,12 @@
           "Avalonia": "11.3.6"
         },
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/Avalonia.Themes.Simple.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/Avalonia.Themes.Simple.dll": {
             "related": ".xml"
           }
         }
@@ -2197,8 +2197,6 @@
             "version": "[11.3.6, )"
           },
           "Avalonia.Diagnostics": {
-            "include": "None",
-            "suppressParent": "All",
             "target": "Package",
             "version": "[11.3.6, )"
           },
@@ -2248,7 +2246,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.111/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,26 +1,30 @@
 using System;
+using Avalonia;
 using Avalonia.Controls;
 
 namespace PrazoCerto.Views;
 
     public partial class ProductsPageView : UserControl
     {
+        private IDisposable? _resizeSubscription;
         public ProductsPageView()
         {
             InitializeComponent();
             // update
-            MyBorder.LayoutUpdated += OnMyBorderAttachedToVisualTree;
+            AttachedToVisualTree += OnAttachedToVisualTree;
         }
 
-
-        private void OnMyBorderAttachedToVisualTree(object? sender, EventArgs e)
+        private void OnAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs e)
         {
-            // Set DataGriHeight
-            if (!(MyBorder.Bounds.Height > 0)) return;
-            
-            var myBorderHeight = MyBorder.Bounds.Height;
-            MyDataGrid.Height = myBorderHeight - 100;
-
+            if (TopLevel.GetTopLevel(this) is Window parentWindow)
+            {
+                _resizeSubscription = parentWindow.GetObservable(TopLevel.ClientSizeProperty).
+                    Subscribe(newSize =>
+                    {
+                        double newHeight = newSize.Height;
+                        MyBorder.Height = newHeight - 100;
+                    });
+            }
         }
         
     }

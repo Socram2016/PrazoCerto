@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
@@ -10,9 +12,19 @@ namespace PrazoCerto.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
+        public MainWindowViewModel()
+        {
+            DateTime today = DateTime.Now;
+
+            if (Products == null) return;
+            if (Products.Any(x => x.ExpirationDate <= today.AddDays(ConfigToExpirationNotif)) )
+            {
+                IsExpiredNotificationOpen = true;
+            }
+        }
+        
         [ObservableProperty]
         private ListItemTemplate? _selectedListItem;
-        
 
         [ObservableProperty]
         private bool _isPaneOpen;
@@ -38,12 +50,6 @@ namespace PrazoCerto.ViewModels
             if (instance == null) return;
             CurrentPage = (ViewModelBase)instance;
         }
-
-        [ObservableProperty]
-        private double _screenWidth;
-
-        [ObservableProperty]
-        private double _screenHeight;
     }
 
 

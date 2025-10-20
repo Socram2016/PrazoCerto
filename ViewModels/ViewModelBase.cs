@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
+using Avalonia.Controls;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
@@ -11,6 +12,14 @@ namespace PrazoCerto.ViewModels;
 
 public partial class ViewModelBase : ObservableObject
 {
+    // Window Length
+    //================================================
+    [ObservableProperty]
+    private double _screenWidth;
+    [ObservableProperty]
+    private double _screenHeight;
+    //================================================
+    
     // Texts
     //================================================
     [ObservableProperty] private string _newProductName = string.Empty;
@@ -21,7 +30,7 @@ public partial class ViewModelBase : ObservableObject
     [ObservableProperty] private string _newProductAmount = string.Empty;
     //================================================
     
-    // Brushs
+    // Brushes
     //================================================
     [ObservableProperty] private IBrush _newProductNameBrush = Brushes.Black;
     [ObservableProperty] private IBrush _newProductCodeBarBrush = Brushes.Black;
@@ -31,32 +40,45 @@ public partial class ViewModelBase : ObservableObject
     [ObservableProperty] private IBrush _newProductAmountBrush = Brushes.Black;
     //================================================
 
-    [ObservableProperty] private bool _notificationPopup;
-    [ObservableProperty] private double _notificationOpacity;
-    [ObservableProperty] private int _configToExpirationNotif;
+    // Save Notification
+    //================================================
+    [ObservableProperty] private bool _saveNotificationPopup;
+    [ObservableProperty] private double _saveNotificationOpacity;
+    //================================================
     
-    // Get JsonProducts path
-    protected readonly string ConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProductsDatabase.json");
+    // Expiration Notification
+    //================================================
+    [ObservableProperty] private int _configToExpirationNotif;
+    [ObservableProperty] private bool _isExpiredNotificationOpen;
+    [ObservableProperty] private PlacementMode _popupPlacement = PlacementMode.RightEdgeAlignedBottom;
+    //================================================
+    
+    // Get Jsons path
+    //================================================
+    protected readonly string ProductsFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProductsDatabase.json");
     protected readonly string ProgramConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs");
+    //================================================
 
     // Store current page
     [ObservableProperty]
     private static ViewModelBase _currentPage = new AddProductPageViewModel();
     
+    // Products
+    //================================================
     private ObservableCollection<Product>? _products;
-
     public ObservableCollection<Product>? Products
     {
         get => _products!;
         set => SetProperty(ref _products, value);
     }
+    //================================================
     
     protected ViewModelBase()
     {
-        if (!File.Exists(ConfigFilePath))
-            File.WriteAllText(ConfigFilePath, "[]");
-
-        var stringFromJson = File.ReadAllText(ConfigFilePath);
+        // check if ProductsFilePath exist
+        if (!File.Exists(ProductsFilePath))
+            File.WriteAllText(ProductsFilePath, "[]");
+        var stringFromJson = File.ReadAllText(ProductsFilePath);
         Products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(stringFromJson) ?? [];
     }
 
@@ -65,57 +87,75 @@ public partial class ViewModelBase : ObservableObject
         // reset burshes
         ResetBrushes(); 
     
-        // 2. Variável para rastrear se QUALQUER erro ocorreu
+        // Variable to track if any error occurred
         var invalidForm = false;
 
         // Validate fields
     
-        // Check if name is filled
+        // Check if name is filled and set red if is not
+        //================================================
         CheckFields(string.IsNullOrEmpty(NewProductName), ref invalidForm, 
             () => NewProductNameBrush = Brushes.Red);
+        //================================================
+        
         
         // Check if day is filled
+        //================================================
         var dayError = string.IsNullOrEmpty(NewProductDay) ||
                        !int.TryParse(NewProductDay, out var day) ||
                        !DateTime.TryParse($"{day}/{01}/{2025}",out _);
+        // set red if is not
         CheckFields(dayError, ref invalidForm, 
             () => NewProductDayBrush = Brushes.Red);
+        //================================================
+        
         
         // Check if month is filled
+        //================================================
         var monthError = string.IsNullOrEmpty(NewProductMonth) ||
                          !int.TryParse(NewProductMonth, out var month) ||
                          !DateTime.TryParse($"{01}/{month}/{2025}",out _);
+        // set red if is not
         CheckFields(monthError, ref invalidForm, 
             () => NewProductMonthBrush = Brushes.Red);
+        //================================================
+        
         
         // Check if year is filled
+        //================================================
         var yearError = string.IsNullOrEmpty(NewProductYear) ||
                         !int.TryParse(NewProductYear, out var year) ||
                         !DateTime.TryParse($"{01}/{01}/{year}",out _);
-        
+        // set red if is not
         CheckFields(yearError, ref invalidForm, 
             () => NewProductYearBrush = Brushes.Red);
+        //================================================
 
 
         // check if code bar is ok
+        //================================================
         var codeBarError = string.IsNullOrEmpty(NewProductCodeBar) || 
                            !long.TryParse(NewProductCodeBar, out _);
         // set red if is not
         CheckFields(codeBarError, ref invalidForm, 
             () => NewProductCodeBarBrush = Brushes.Red);
+        //================================================
         
         // check if amount is ok
+        //================================================
         var amountError = string.IsNullOrEmpty(NewProductAmount) ||
                           !ToCheck.IsInt(NewProductAmount);
-        
         // set red if is not
         CheckFields(amountError, ref invalidForm, 
             () => NewProductAmountBrush = Brushes.Red);
+        //================================================
 
+        
         // return 
         return !invalidForm;
     }
 
+    // Reset texts
     protected void ResetTexts()
     {
         NewProductName = "";
@@ -148,28 +188,34 @@ public partial class ViewModelBase : ObservableObject
         invalidForm = true;
     }
 
-    // remove item
+    // remove item of data grid
     public void RemoveItem(Product dataGridSelectedProduct)
     {
+        // remove 
         Products?.Remove(dataGridSelectedProduct);
+        // update json
         var stringToJson = JsonConvert.SerializeObject(Products,Formatting.Indented);
-        File.WriteAllText(ConfigFilePath,stringToJson);
+        File.WriteAllText(ProductsFilePath,stringToJson);
     }
-
+    
+    // update Products
     public void UpdateProducts()
     {
-        var stringFromJson = File.ReadAllText(ConfigFilePath);
+        // get json
+        string stringFromJson = File.ReadAllText(ProductsFilePath);
         Products?.Clear();
+        // update Products
         Products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(stringFromJson);
     }
 
-    public async Task Notification()
+    // Saved Notification
+    public async Task SaveNotification()
     {
-        NotificationPopup = true;
-        NotificationOpacity = 1.0;
+        SaveNotificationPopup = true;
+        SaveNotificationOpacity = 1.0;
         await Task.Delay(1000);
-        NotificationOpacity = 0.0;
+        SaveNotificationOpacity = 0.0;
         await Task.Delay(1000);
-        NotificationPopup = false;
+        SaveNotificationPopup = false;
     }
 }

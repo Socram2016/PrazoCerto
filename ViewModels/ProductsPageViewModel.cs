@@ -22,7 +22,7 @@ public partial class ProductsPageViewModel : ViewModelBase
 
     [ObservableProperty] private bool _isPopupOpen;
 
-    [ObservableProperty] private ObservableCollection<Product> _productsList;
+    [ObservableProperty] private ObservableCollection<Product>? _productsList;
 
     private ComboBoxItem? _comboBoxSelectedItem;
     public ComboBoxItem? ComboBoxSelectedItem
@@ -31,7 +31,6 @@ public partial class ProductsPageViewModel : ViewModelBase
         set
         {
             if (value != null) SetProperty(ref _comboBoxSelectedItem, value);
-            
         }
     }
 
@@ -86,7 +85,7 @@ public partial class ProductsPageViewModel : ViewModelBase
     [RelayCommand]
     private void RemoveProduct()
     {
-        if (DataGridSelectedProduct == null) return;
+        if (DataGridSelectedProduct == null || ProductsList == null) return;
         
         RemoveItem(DataGridSelectedProduct);
         ProductsList.Remove(DataGridSelectedProduct);
@@ -132,11 +131,11 @@ public partial class ProductsPageViewModel : ViewModelBase
             NewProductMonth,
             NewProductYear,
             NewProductAmount,
-            ConfigFilePath);
+            ProductsFilePath);
         UpdateProducts();
         if (Products != null) ProductsList = new ObservableCollection<Product>(Products);
         
-        Notification();
+        _ = SaveNotification();
         IsPopupOpen = !IsPopupOpen;
     }
 }

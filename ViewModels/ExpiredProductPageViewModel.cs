@@ -15,8 +15,12 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
     public ExpiredProductPageViewModel()
     {
         // Filtra apenas os produtos vencidos
-        var tempList = Products.Where(static item => item.TimeRemaining == "Vencido").ToList();
-        ExpiredProducts = new ObservableCollection<Product>(tempList);
+        List<Product> tempList;
+        if (Products != null)
+        {
+            tempList = Products.Where(static item => item.TimeRemaining == "Vencido").ToList();
+            ExpiredProducts = new ObservableCollection<Product>(tempList);
+        }
 
         NumberOfProducts = $"{ExpiredProducts.Count()} Produtos";
     }
@@ -67,8 +71,9 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
     {
         if (ComboBoxSelectedItem != null && !string.IsNullOrEmpty(SearchTextBox))
         {
-            var tempList = new List<Product>();
-            if (ComboBoxSelectedItem.Tag != null)
+            List<Product> tempList;
+            
+            if (ComboBoxSelectedItem.Tag != null && Products != null)
             {
                 switch (ComboBoxSelectedItem.Tag)
                 {
@@ -92,6 +97,7 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
     private void ClearSelection() 
     {
         SearchTextBox = "";
+        if (Products == null) return;
         ExpiredProducts = new ObservableCollection<Product>(Products);
     }
     
@@ -99,13 +105,12 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
     [RelayCommand]
     private void RemoveProduct()
     {
-        if (DataGridSelectedProduct != null)
-        {
-            Products.Remove(DataGridSelectedProduct);
-            ExpiredProducts.Remove(DataGridSelectedProduct);
+        if (DataGridSelectedProduct == null || Products == null) return;
+        
+        Products.Remove(DataGridSelectedProduct);
+        ExpiredProducts.Remove(DataGridSelectedProduct);
 
-            string strToJson = JsonConvert.SerializeObject(Products, Formatting.Indented);
-            File.WriteAllText(ConfigFilePath, strToJson);
-        }
+        string strToJson = JsonConvert.SerializeObject(Products, Formatting.Indented);
+        File.WriteAllText(ProductsFilePath, strToJson);
     }
 }

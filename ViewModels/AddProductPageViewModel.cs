@@ -8,30 +8,28 @@ namespace PrazoCerto.ViewModels;
 
 public partial class AddProductPageViewModel : ViewModelBase
 {
-    [RelayCommand]
-    private void NotificationButton()
-    {
-        Notification();
-    }
     // Save button
     [RelayCommand]
     private void SaveButton()
     {
+        
         if (!ValidateForm()) return;
-
+        
+        // save in json
         ProductFormField.SaveProduct(NewProductName,
             NewProductCodeBar,
             NewProductDay,
             NewProductMonth,
             NewProductYear,
             NewProductAmount,
-            ConfigFilePath);
+            ProductsFilePath);
+        
         UpdateProducts();
         ResetBrushes();
         ResetTexts();
-        Notification();
+        _ = SaveNotification();
     }
-
+    
     public ObservableCollection<SyncItemTemplate> SyncItems { get; } = new()
     {
         new SyncItemTemplate("Teste"),

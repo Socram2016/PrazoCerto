@@ -33,6 +33,7 @@
 
         
         <Border
+            x:Name="MyBorder"
             Grid.Row="1"
             Background="DarkGray"
             Padding="15"

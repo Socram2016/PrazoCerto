@@ -25,14 +25,14 @@
             VerticalOffset="-20"
             Placement="Bottom"
             PlacementAnchor="{Binding $parent[WindowBase]}"
-            IsOpen="{Binding NotificationPopup}">
+            IsOpen="{Binding SaveNotificationPopup}">
             
             <Border 
             
                 BorderThickness="1"
                 Background="LightSlateGray"
                 CornerRadius="10"
-                Opacity="{Binding NotificationOpacity}">
+                Opacity="{Binding SaveNotificationOpacity}">
                 <Border.Transitions>
                     <Transitions>
                         <DoubleTransition Property="Opacity" Duration="0:0:0.5"></DoubleTransition>

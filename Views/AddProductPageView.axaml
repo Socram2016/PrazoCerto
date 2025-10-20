@@ -28,6 +28,7 @@
     </StackPanel>
 
     <Border
+      x:Name="MyBorder"
       Grid.Row="1"
       Padding="15"
       Background="DarkGray"

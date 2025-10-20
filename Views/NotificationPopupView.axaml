@@ -11,21 +11,27 @@
         HorizontalAlignment="Center"
         VerticalAlignment="Bottom"
         VerticalOffset="-20"
-        Placement="BottomEdgeAlignedRight"
+        Placement="{Binding PopupPlacement}"
         PlacementAnchor="{Binding $parent[WindowBase]}"
-        IsOpen="{Binding IsNotificationOpen}">
+        IsOpen="{Binding IsExpiredNotificationOpen}">
+        
         <Border Background="Aqua" Margin="15" CornerRadius="15">
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+                
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    
                     <Label HorizontalAlignment="Center" FontSize="26" FontWeight="Bold" Foreground="Red"> ATENÇÃO</Label>
-                    <Button>X</Button>
+                    <Button Background="Black" Command="{Binding ClosePopupCommand}">X</Button>
+                    
                 </StackPanel>
+                
                 <Border Padding="10" Background="YellowGreen" CornerRadius="10">
                     <TextBlock 
                         TextAlignment="Center" 
                         TextWrapping="Wrap" Text="Existem produtos próximos do vencimento"
                         FontSize="16" FontWeight="Bold" />
                 </Border>
+                
             </StackPanel>
         </Border>
     </Popup>

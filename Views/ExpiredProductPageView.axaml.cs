@@ -1,22 +1,30 @@
 using System;
+using Avalonia;
 using Avalonia.Controls;
 
 namespace PrazoCerto.Views;
 
 public partial class ExpiredProductPageView : UserControl
 {
+    private IDisposable? _resizeSubscription;
+    
     public ExpiredProductPageView()
     {
         InitializeComponent();
-        MyBorder.LayoutUpdated += OnMyBorderAttachedToVisualTree;
+        AttachedToVisualTree += OnAttachedToVisualTree;
     }
 
-    private void OnMyBorderAttachedToVisualTree(object? sender, EventArgs e)
+    private void OnAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs e)
     {
-        if (!(MyBorder.Bounds.Height > 0)) return;
-        
-        var myBorderHeight = MyBorder.Bounds.Height;
-        MyDataGrid.Height = myBorderHeight - 100;
+        if (TopLevel.GetTopLevel(this) is Window parentWindow)
+        {
+            _resizeSubscription = parentWindow.GetObservable(TopLevel.ClientSizeProperty).Subscribe(newSize =>
+            {
+                double newHeiht = newSize.Height;
 
+                MyBorder.Height = newHeiht - 100;
+            });
+        }
     }
+    
 }
