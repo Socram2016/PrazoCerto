@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Data;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PrazoCerto.Views;
 
 namespace PrazoCerto.ViewModels
 {
@@ -22,13 +22,13 @@ namespace PrazoCerto.ViewModels
                 IsExpiredNotificationOpen = true;
             }
         }
+
+        [ObservableProperty] private ListItemTemplate? _selectedListItem ;
+        
         
         [ObservableProperty]
-        private ListItemTemplate? _selectedListItem;
-
-        [ObservableProperty]
         private bool _isPaneOpen;
-
+        
         [RelayCommand]
         private void OpenPane()
         {
@@ -37,7 +37,6 @@ namespace PrazoCerto.ViewModels
 
         public ObservableCollection<ListItemTemplate> Items { get; } =
         [
-            new (typeof(AddProductPageViewModel), iconKey: "add_square_regular", label: "Adicionar Produto"),
             new (typeof(ExpiredProductPageViewModel), iconKey: "clock_regular", label: "Produtos Vencidos"),
             new (typeof(ProductsPageViewModel), iconKey: "bag_2d_regular", label: "Lista de Produtos"),
             new (typeof(ConfigPageViewModel), iconKey: "Gear_regular", label: "Configurações")
@@ -45,7 +44,8 @@ namespace PrazoCerto.ViewModels
 
         partial void OnSelectedListItemChanged(ListItemTemplate? value)
         {
-            if (value is null || value.ModelType is null) return;
+            if (value is null) return;
+            if (value.ModelType is null) return;
             var instance = Activator.CreateInstance(value.ModelType);
             if (instance == null) return;
             CurrentPage = (ViewModelBase)instance;
@@ -66,7 +66,9 @@ namespace PrazoCerto.ViewModels
             ModelType = type;
 
             StreamGeometry? geometry = null;
-            if (iconKey != null && Application.Current != null && Application.Current.TryFindResource(iconKey, out var icon))
+            if (iconKey != null &&
+                Application.Current!= null && 
+                Application.Current.TryFindResource(iconKey, out var icon))
             {
                 geometry = icon as StreamGeometry;
             }

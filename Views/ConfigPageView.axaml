@@ -54,7 +54,6 @@
                         Content="Dias"></Label>
                 </StackPanel>
                 <Button
-                    Command="{Binding SaveConfigCommand}" 
                     Foreground="White" 
                     Content="Save"></Button>
             </StackPanel>

@@ -34,6 +34,7 @@ public partial class App : Application
             };
         }
 
+        
         string configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"ProductsDatabase.json");
         if (File.Exists(configFilePath))
         {

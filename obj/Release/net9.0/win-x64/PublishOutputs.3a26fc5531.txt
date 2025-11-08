@@ -182,7 +182,7 @@
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/publish/hostfxr.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/publish/hostpolicy.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/publish/mscordaccore.dll
-/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/publish/mscordaccore_amd64_amd64_9.0.925.41916.dll
+/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/publish/mscordaccore_amd64_amd64_9.0.1025.47515.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/publish/mscordbi.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/publish/mscorrc.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/publish/msquic.dll

@@ -13,7 +13,7 @@
         VerticalOffset="-20"
         Placement="{Binding PopupPlacement}"
         PlacementAnchor="{Binding $parent[WindowBase]}"
-        IsOpen="{Binding IsExpiredNotificationOpen}">
+        IsOpen="False">
         
         <Border Background="Aqua" Margin="15" CornerRadius="15">
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">

@@ -1,14 +1,12 @@
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace PrazoCerto.Models;
 
 public class Product : ObservableObject
 {
-    private TimeSpan Tempo => ExpirationDate - DateTime.Now;
-    private string _timeRemaining;
+    private TimeSpan Time => ExpirationDate - DateTime.Now;
+    private string _timeRemaining = string.Empty;
 
     public string TimeRemaining
     {
@@ -16,8 +14,7 @@ public class Product : ObservableObject
         set => SetProperty(ref _timeRemaining, value);
     }
 
-    private string _name;
-
+    private string _name = string.Empty;
     public string Name
     {
         get => _name;
@@ -41,7 +38,7 @@ public class Product : ObservableObject
             {
                 SetProperty(ref _expirationDate, value);
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(Tempo));
+                OnPropertyChanged(nameof(Time));
             }
         }
     }
@@ -58,16 +55,17 @@ public class Product : ObservableObject
                    DateTime expirationDate,
                    int amount = 0)
     {
-        _name = name;
-        _codeBar = codeBar;
-        _expirationDate = expirationDate;
+        Name = name;
+        CodeBar = codeBar;
+        ExpirationDate = expirationDate;
 
         var daysToExpiration = (ExpirationDate - DateTime.Now).Days;
 
-        if (daysToExpiration <= 0) _timeRemaining = "Vencido";
-        else _timeRemaining = $"{(ExpirationDate - DateTime.Now).Days} dias";
+        TimeRemaining = daysToExpiration <= 0 ?
+            "Vencido" :
+            $"{(ExpirationDate-DateTime.Now).Days:0000} dias";
         
-        _amount = amount;
-    }
+        Amount = amount;
+}
 
 }

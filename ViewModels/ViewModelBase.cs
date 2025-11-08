@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
@@ -7,17 +8,33 @@ using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
 using PrazoCerto.Models;
+using PrazoCerto.Views;
 
 namespace PrazoCerto.ViewModels;
 
 public partial class ViewModelBase : ObservableObject
 {
+    protected ViewModelBase()
+    {
+        // check if dataDirectory exist
+        if (!Directory.Exists(dataDirectory))
+            Directory.CreateDirectory(dataDirectory);
+        
+        // check if ProductsFilePath exist
+        if (!File.Exists(ProductsFilePath))
+            File.WriteAllText(ProductsFilePath, "[]");
+        
+        UpdateProducts();
+    }
     // Window Length
     //================================================
-    [ObservableProperty]
-    private double _screenWidth;
-    [ObservableProperty]
-    private double _screenHeight;
+    [ObservableProperty] private double _screenWidth;
+    [ObservableProperty] private double _screenHeight;
+    //================================================
+    
+    // DataGrid height
+    //================================================
+    [ObservableProperty] private double _datagridHeight = 350;
     //================================================
     
     // Texts
@@ -46,6 +63,17 @@ public partial class ViewModelBase : ObservableObject
     [ObservableProperty] private double _saveNotificationOpacity;
     //================================================
     
+    // Delete Notification
+    //================================================
+    [ObservableProperty] private bool _deleteNotificationPopup;
+    [ObservableProperty] private double _deleteNotificationOpacity;
+    //================================================
+    
+    // Add Product Popup
+    //================================================
+    [ObservableProperty] private bool _addProductPopup;
+    //================================================
+    
     // Expiration Notification
     //================================================
     [ObservableProperty] private int _configToExpirationNotif;
@@ -55,13 +83,17 @@ public partial class ViewModelBase : ObservableObject
     
     // Get Jsons path
     //================================================
-    protected readonly string ProductsFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProductsDatabase.json");
-    protected readonly string ProgramConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs");
+    private static string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    private static string dataDirectory = baseDirectory+Path.DirectorySeparatorChar+"dados";
+    protected readonly string ProductsFilePath = Path.Combine(dataDirectory, "ProductsDatabase.json");
+    protected readonly string ProgramConfigPath = Path.Combine(baseDirectory, "Configs");
     //================================================
 
     // Store current page
+    //================================================
     [ObservableProperty]
-    private static ViewModelBase _currentPage = new AddProductPageViewModel();
+    private static ViewModelBase _currentPage = new ProductsPageViewModel();
+    //================================================
     
     // Products
     //================================================
@@ -73,14 +105,7 @@ public partial class ViewModelBase : ObservableObject
     }
     //================================================
     
-    protected ViewModelBase()
-    {
-        // check if ProductsFilePath exist
-        if (!File.Exists(ProductsFilePath))
-            File.WriteAllText(ProductsFilePath, "[]");
-        var stringFromJson = File.ReadAllText(ProductsFilePath);
-        Products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(stringFromJson) ?? [];
-    }
+    
 
     protected bool ValidateForm()
     {
@@ -154,8 +179,7 @@ public partial class ViewModelBase : ObservableObject
         // return 
         return !invalidForm;
     }
-
-    // Reset texts
+    
     protected void ResetTexts()
     {
         NewProductName = "";
@@ -165,8 +189,7 @@ public partial class ViewModelBase : ObservableObject
         NewProductYear = "";
         NewProductAmount = "";
     }
-
-    // Reset brushes
+    
     protected void ResetBrushes()
     {
         IBrush corPadrão = Brushes.Black;
@@ -179,7 +202,6 @@ public partial class ViewModelBase : ObservableObject
         NewProductAmountBrush = corPadrão;
     }
     
-    // check fields
     private static void CheckFields(bool errorCondition, ref bool invalidForm, Action assignError)
     {
         if (!errorCondition) return;
@@ -188,7 +210,7 @@ public partial class ViewModelBase : ObservableObject
         invalidForm = true;
     }
 
-    // remove item of data grid
+    // remove item from data grid
     public void RemoveItem(Product dataGridSelectedProduct)
     {
         // remove 
@@ -198,17 +220,18 @@ public partial class ViewModelBase : ObservableObject
         File.WriteAllText(ProductsFilePath,stringToJson);
     }
     
-    // update Products
-    public void UpdateProducts()
+    // update Products list
+    public void UpdateProducts(bool getJson = true)
     {
         // get json
         string stringFromJson = File.ReadAllText(ProductsFilePath);
         Products?.Clear();
-        // update Products
+        
+        // update Products variable
         Products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(stringFromJson);
     }
 
-    // Saved Notification
+    // Notification
     public async Task SaveNotification()
     {
         SaveNotificationPopup = true;

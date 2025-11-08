@@ -20,7 +20,7 @@ public partial class ProductsPageViewModel : ViewModelBase
 
     [ObservableProperty] private Product? _dataGridSelectedProduct;
 
-    [ObservableProperty] private bool _isPopupOpen;
+    [ObservableProperty] private bool _isEditPopupOpen;
 
     [ObservableProperty] private ObservableCollection<Product>? _productsList;
 
@@ -81,40 +81,80 @@ public partial class ProductsPageViewModel : ViewModelBase
         if (Products != null) ProductsList = new ObservableCollection<Product>(Products);
     }
 
-    // Botão de remover
+    // Delete button
     [RelayCommand]
-    private void RemoveProduct()
+    private void DeleteButton()
+    {
+        if (DataGridSelectedProduct == null || ProductsList == null) return;
+        DeleteNotificationOpacity = 1;
+        DeleteNotificationPopup = true;
+    }
+
+    // Confirm Delete
+    [RelayCommand]
+    private void ConfirmDelete()
     {
         if (DataGridSelectedProduct == null || ProductsList == null) return;
         
         RemoveItem(DataGridSelectedProduct);
         ProductsList.Remove(DataGridSelectedProduct);
+        DeleteNotificationOpacity = 0;
+        DeleteNotificationPopup = false;
+        UpdateProducts();
     }
-
+    
+    // Add Product
+    [RelayCommand]
+    private void AddButton()
+    {
+        DataGridSelectedProduct = null;
+        IsEditPopupOpen = !IsEditPopupOpen;
+    }
+    // Deny delete
+    [RelayCommand]
+    private void DenyDelete()
+    {
+        DeleteNotificationOpacity = 0;
+        DeleteNotificationPopup = false;
+    }
+    
     // Close PopUp
     [RelayCommand]
     private void ClosePopUp()
     {
-        IsPopupOpen = !IsPopupOpen;
+        IsEditPopupOpen = !IsEditPopupOpen;
+        ClearFields();
     }
     
-    // Botão de Editar
+    // Clear fields
+    private void ClearFields()
+    {
+        NewProductName =
+            NewProductCodeBar =
+                NewProductDay =
+                    NewProductMonth =
+                        NewProductYear =
+                            NewProductAmount = string.Empty;
+    }
+    
+    // Edit product
     [RelayCommand]
     private void EditProduct()
     {
         if (DataGridSelectedProduct == null) return;
-
-        var itemSelected = DataGridSelectedProduct;
         
-        IsPopupOpen = !IsPopupOpen;
+            var itemSelected = DataGridSelectedProduct;
         
-        // get all information
-        NewProductName = itemSelected.Name;
-        NewProductCodeBar = itemSelected.CodeBar.ToString();
-        NewProductDay = itemSelected.ExpirationDate.Day.ToString();
-        NewProductMonth = itemSelected.ExpirationDate.Month.ToString();
-        NewProductYear = itemSelected.ExpirationDate.Year.ToString();
-        NewProductAmount = itemSelected.Amount.ToString();
+            IsEditPopupOpen = !IsEditPopupOpen;
+        
+            // get all information
+            NewProductName = itemSelected.Name;
+            NewProductCodeBar = itemSelected.CodeBar.ToString();
+            NewProductDay = itemSelected.ExpirationDate.Day.ToString();
+            NewProductMonth = itemSelected.ExpirationDate.Month.ToString();
+            NewProductYear = itemSelected.ExpirationDate.Year.ToString();
+            NewProductAmount = itemSelected.Amount.ToString();
+            
     }
 
     // Save product
@@ -122,9 +162,12 @@ public partial class ProductsPageViewModel : ViewModelBase
     private void SaveProduct()
     {
         if (!ValidateForm()) return;
-        if (DataGridSelectedProduct == null) return;
         
-        RemoveProduct();
+        if (DataGridSelectedProduct != null)
+        {
+            ConfirmDelete();
+        }
+        
         ProductFormField.SaveProduct(NewProductName,
             NewProductCodeBar,
             NewProductDay,
@@ -132,11 +175,13 @@ public partial class ProductsPageViewModel : ViewModelBase
             NewProductYear,
             NewProductAmount,
             ProductsFilePath);
+        
         UpdateProducts();
+        
         if (Products != null) ProductsList = new ObservableCollection<Product>(Products);
         
         _ = SaveNotification();
-        IsPopupOpen = !IsPopupOpen;
+        IsEditPopupOpen = !IsEditPopupOpen;
     }
 }
 

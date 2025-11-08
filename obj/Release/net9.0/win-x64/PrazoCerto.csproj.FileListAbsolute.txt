@@ -209,7 +209,6 @@
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/hostfxr.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/hostpolicy.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/mscordaccore.dll
-/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/mscordaccore_amd64_amd64_9.0.925.41916.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/mscordbi.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/mscorrc.dll
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/msquic.dll
@@ -242,3 +241,4 @@
 /home/marcos/Documentos/PrazoCerto/obj/Release/net9.0/win-x64/ref/PrazoCerto.dll
 /home/marcos/Documentos/PrazoCerto/obj/Release/net9.0/win-x64/PrazoCerto.sourcelink.json
 /home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/FirebirdSql.Data.FirebirdClient.dll
+/home/marcos/Documentos/PrazoCerto/bin/Release/net9.0/win-x64/mscordaccore_amd64_amd64_9.0.1025.47515.dll
