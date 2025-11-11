@@ -29,7 +29,7 @@ public partial class ProductFormField : UserControl
         
         
         // Create a new product
-        var product = new Product(name.ToUpper(), codeBar, date, amount);
+        var product = new Product(name.ToUpper(), date, amount, codeBar);
         
         // Save in json
         var stringFromJson = File.ReadAllText(filePath);

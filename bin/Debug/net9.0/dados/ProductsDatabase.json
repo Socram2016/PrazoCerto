@@ -1,0 +1,345 @@
+[
+  {
+    "TimeRemaining": "0 anos, 1 meses, 22 dias",
+    "Name": "TOMATE AZEDO",
+    "CodeBar": 1234,
+    "ExpirationDate": "2025-12-31T00:00:00",
+    "Amount": 35
+  },
+  {
+    "TimeRemaining": "1 anos, 4 meses, 21 dias",
+    "Name": "SABONETE DE ROA  MOSQUETA",
+    "CodeBar": 7898299571218,
+    "ExpirationDate": "2027-03-30T00:00:00",
+    "Amount": 4
+  },
+  {
+    "TimeRemaining": "0 anos, 11 meses, 25 dias",
+    "Name": "SABONETE DE COCO",
+    "CodeBar": 7898299570099,
+    "ExpirationDate": "2026-10-30T00:00:00",
+    "Amount": 5
+  },
+  {
+    "TimeRemaining": "2 anos, 2 meses, 22 dias",
+    "Name": "SABONETE DE MICOSE ",
+    "CodeBar": 123456789,
+    "ExpirationDate": "2028-01-30T00:00:00",
+    "Amount": 2
+  },
+  {
+    "TimeRemaining": "0 anos, 2 meses, 22 dias",
+    "Name": "SABONETE DE COPAÍBA",
+    "CodeBar": 7898299570952,
+    "ExpirationDate": "2026-01-30T00:00:00",
+    "Amount": 9
+  },
+  {
+    "TimeRemaining": "1 anos, 8 meses, 23 dias",
+    "Name": "SABONETE DE AROEIRA",
+    "CodeBar": 7896758857576,
+    "ExpirationDate": "2027-07-30T00:00:00",
+    "Amount": 7
+  },
+  {
+    "TimeRemaining": "0 anos, 9 meses, 24 dias",
+    "Name": "SABONETE DE ARGILA VERDE ",
+    "CodeBar": 7898299570075,
+    "ExpirationDate": "2026-08-30T00:00:00",
+    "Amount": 9
+  },
+  {
+    "TimeRemaining": "1 anos, 3 meses, 21 dias",
+    "Name": "SABONETE DE AÇAFRÃO",
+    "CodeBar": 7896758859570,
+    "ExpirationDate": "2027-02-28T00:00:00",
+    "Amount": 9
+  },
+  {
+    "TimeRemaining": "1 anos, 3 meses, 21 dias",
+    "Name": "SABONETE DE COLAGENO ",
+    "CodeBar": 7896758859396,
+    "ExpirationDate": "2027-02-28T00:00:00",
+    "Amount": 9
+  },
+  {
+    "TimeRemaining": "1 anos, 6 meses, 22 dias",
+    "Name": "SABONETE ÍNTIMO ",
+    "CodeBar": 7898936049933,
+    "ExpirationDate": "2027-05-30T00:00:00",
+    "Amount": 3
+  },
+  {
+    "TimeRemaining": "2 anos, 0 meses, 21 dias",
+    "Name": "DESODORANTE ",
+    "CodeBar": 7895454817631,
+    "ExpirationDate": "2027-11-30T00:00:00",
+    "Amount": 4
+  },
+  {
+    "TimeRemaining": "2 anos, 6 meses, 5 dias",
+    "Name": "EXPINHEIRA SANTA CAPSULA ",
+    "CodeBar": 7898927156978,
+    "ExpirationDate": "2028-05-12T00:00:00",
+    "Amount": 6
+  },
+  {
+    "TimeRemaining": "1 anos, 9 meses, 12 dias",
+    "Name": "ESPINHEIRA SANTA LIQUIDA ",
+    "CodeBar": 7896705211857,
+    "ExpirationDate": "2027-08-18T00:00:00",
+    "Amount": 3
+  },
+  {
+    "TimeRemaining": "1 anos, 8 meses, 7 dias",
+    "Name": "GLUCOMANNAN",
+    "CodeBar": 7894396914446,
+    "ExpirationDate": "2027-07-14T00:00:00",
+    "Amount": 3
+  },
+  {
+    "TimeRemaining": "1 anos, 3 meses, 21 dias",
+    "Name": "MAGUINÉSIO E TREONINA ",
+    "CodeBar": 7898680413431,
+    "ExpirationDate": "2027-02-28T00:00:00",
+    "Amount": 6
+  },
+  {
+    "TimeRemaining": "0 anos, 9 meses, 24 dias",
+    "Name": "MAGNÉSIO E TREONINA NATURE ",
+    "CodeBar": 7898680419808,
+    "ExpirationDate": "2026-08-30T00:00:00",
+    "Amount": 1
+  },
+  {
+    "TimeRemaining": "2 anos, 6 meses, 23 dias",
+    "Name": "MANTEIGA DE CACAU ",
+    "CodeBar": 7897799802464,
+    "ExpirationDate": "2028-05-30T00:00:00",
+    "Amount": 7
+  },
+  {
+    "TimeRemaining": "1 anos, 7 meses, 23 dias",
+    "Name": "CRANBERRY",
+    "CodeBar": 7898680411475,
+    "ExpirationDate": "2027-06-30T00:00:00",
+    "Amount": 3
+  },
+  {
+    "TimeRemaining": "1 anos, 6 meses, 22 dias",
+    "Name": "MELATONINA BIOKLEIN",
+    "CodeBar": 7898680412823,
+    "ExpirationDate": "2027-05-30T00:00:00",
+    "Amount": 5
+  },
+  {
+    "TimeRemaining": "2 anos, 7 meses, 6 dias",
+    "Name": "ÓLEO DE MENTA ",
+    "CodeBar": 7898488010047,
+    "ExpirationDate": "2028-06-12T00:00:00",
+    "Amount": 9
+  },
+  {
+    "TimeRemaining": "1 anos, 7 meses, 23 dias",
+    "Name": "CHICORIA COM MANÁ",
+    "CodeBar": 7898047851128,
+    "ExpirationDate": "2027-06-30T00:00:00",
+    "Amount": 5
+  },
+  {
+    "TimeRemaining": "1 anos, 5 meses, 8 dias",
+    "Name": "9 MISTURA LIQUIDO ",
+    "CodeBar": 7891402199422,
+    "ExpirationDate": "2027-04-16T00:00:00",
+    "Amount": 4
+  },
+  {
+    "TimeRemaining": "2 anos, 7 meses, 24 dias",
+    "Name": "CREME DENTAL ",
+    "CodeBar": 7890310111489,
+    "ExpirationDate": "2028-06-30T00:00:00",
+    "Amount": 4
+  },
+  {
+    "TimeRemaining": "0 anos, 9 meses, 16 dias",
+    "Name": "ÓLEO DE PRÍMULA EM CÁPSULA ",
+    "CodeBar": 7898596082295,
+    "ExpirationDate": "2026-08-22T00:00:00",
+    "Amount": 6
+  },
+  {
+    "TimeRemaining": "0 anos, 7 meses, 23 dias",
+    "Name": "CONTROL FOOD ",
+    "CodeBar": 7898702041109,
+    "ExpirationDate": "2026-06-30T00:00:00",
+    "Amount": 4
+  },
+  {
+    "TimeRemaining": "1 anos, 2 meses, 30 dias",
+    "Name": "VITAMINA D3 E K2 NEW FOUR ",
+    "CodeBar": 789003125605,
+    "ExpirationDate": "2027-02-07T00:00:00",
+    "Amount": 3
+  },
+  {
+    "TimeRemaining": "1 anos, 4 meses, 29 dias",
+    "Name": "VITAMINA D3 E K2 FLORA BRASIL ",
+    "CodeBar": 7908041912807,
+    "ExpirationDate": "2027-04-07T00:00:00",
+    "Amount": 8
+  },
+  {
+    "TimeRemaining": "2 anos, 6 meses, 5 dias",
+    "Name": "ANTI FUMO ",
+    "CodeBar": 7896176919986,
+    "ExpirationDate": "2028-05-12T00:00:00",
+    "Amount": 10
+  },
+  {
+    "TimeRemaining": "0 anos, 0 meses, 24 dias",
+    "Name": "REQUEIJÃO VEG TRAD",
+    "CodeBar": 7898958161224,
+    "ExpirationDate": "2025-12-03T00:00:00",
+    "Amount": 10
+  },
+  {
+    "TimeRemaining": "1 anos, 8 meses, 7 dias",
+    "Name": "PROPO MAX",
+    "CodeBar": 7896663301317,
+    "ExpirationDate": "2027-07-14T00:00:00",
+    "Amount": 11
+  },
+  {
+    "TimeRemaining": "1 anos, 7 meses, 24 dias",
+    "Name": "EXTRATO DE PROPOLIS",
+    "CodeBar": 7896663302550,
+    "ExpirationDate": "2027-07-01T00:00:00",
+    "Amount": 5
+  },
+  {
+    "TimeRemaining": "1 anos, 0 meses, 22 dias",
+    "Name": "EXTRATO DE PROPOLIS VERDE 7",
+    "CodeBar": 7896663322473,
+    "ExpirationDate": "2026-12-01T00:00:00",
+    "Amount": 1
+  },
+  {
+    "TimeRemaining": "1 anos, 6 meses, 22 dias",
+    "Name": "ÓLEO DE COPAIBA ",
+    "CodeBar": 7898296167261,
+    "ExpirationDate": "2027-05-30T00:00:00",
+    "Amount": 13
+  },
+  {
+    "TimeRemaining": "0 anos, 2 meses, 22 dias",
+    "Name": "ÓLEO DE GIRASSOL ",
+    "CodeBar": 7898715920478,
+    "ExpirationDate": "2026-01-30T00:00:00",
+    "Amount": 17
+  },
+  {
+    "TimeRemaining": "0 anos, 8 meses, 23 dias",
+    "Name": "CANELA DE VELHO ",
+    "CodeBar": 7898936049889,
+    "ExpirationDate": "2026-07-30T00:00:00",
+    "Amount": 1
+  },
+  {
+    "TimeRemaining": "0 anos, 9 meses, 24 dias",
+    "Name": "POMADA PRETA ",
+    "CodeBar": 7898936049728,
+    "ExpirationDate": "2026-08-30T00:00:00",
+    "Amount": 5
+  },
+  {
+    "TimeRemaining": "0 anos, 4 meses, 21 dias",
+    "Name": "SPORTEGEL",
+    "CodeBar": 7898936049780,
+    "ExpirationDate": "2026-03-30T00:00:00",
+    "Amount": 10
+  },
+  {
+    "TimeRemaining": "2 anos, 2 meses, 22 dias",
+    "Name": "PROSTATAN",
+    "CodeBar": 3534843369330,
+    "ExpirationDate": "2028-01-30T00:00:00",
+    "Amount": 4
+  },
+  {
+    "TimeRemaining": "2 anos, 2 meses, 22 dias",
+    "Name": "BABOSA ALOIVERA",
+    "CodeBar": 7898936048356,
+    "ExpirationDate": "2028-01-30T00:00:00",
+    "Amount": 10
+  },
+  {
+    "TimeRemaining": "2 anos, 3 meses, 21 dias",
+    "Name": "CHÁ DA VIDA LIQUIDO ",
+    "CodeBar": 7899513191298,
+    "ExpirationDate": "2028-02-28T00:00:00",
+    "Amount": 7
+  },
+  {
+    "TimeRemaining": "2 anos, 4 meses, 22 dias",
+    "Name": "COLUNA FORTE ",
+    "CodeBar": 7899607021937,
+    "ExpirationDate": "2028-03-30T00:00:00",
+    "Amount": 6
+  },
+  {
+    "TimeRemaining": "2 anos, 3 meses, 21 dias",
+    "Name": "ELIXIR DE INHAME ",
+    "CodeBar": 7895674214036,
+    "ExpirationDate": "2028-02-28T00:00:00",
+    "Amount": 5
+  },
+  {
+    "TimeRemaining": "0 anos, 11 meses, 25 dias",
+    "Name": "ÓLEO VEJETAL DE ROSA MOSQUETA ",
+    "CodeBar": 7898919164486,
+    "ExpirationDate": "2026-10-30T00:00:00",
+    "Amount": 5
+  },
+  {
+    "TimeRemaining": "1 anos, 1 meses, 21 dias",
+    "Name": "ENERGY GEL AÇAI ",
+    "CodeBar": 7897104925697,
+    "ExpirationDate": "2026-12-30T00:00:00",
+    "Amount": 12
+  },
+  {
+    "TimeRemaining": "1 anos, 5 meses, 32 dias",
+    "Name": "XAROPE 9 MISTURA ",
+    "CodeBar": 7898600813167,
+    "ExpirationDate": "2027-05-10T00:00:00",
+    "Amount": 5
+  },
+  {
+    "TimeRemaining": "1 anos, 1 meses, 21 dias",
+    "Name": "ENERGY GEL ",
+    "CodeBar": 7897104925680,
+    "ExpirationDate": "2026-12-30T00:00:00",
+    "Amount": 17
+  },
+  {
+    "TimeRemaining": "2 anos, 2 meses, 2 dias",
+    "Name": "JUMENTÃO ",
+    "CodeBar": 123456789987,
+    "ExpirationDate": "2028-01-10T00:00:00",
+    "Amount": 10
+  },
+  {
+    "TimeRemaining": "0 anos, 11 meses, 25 dias",
+    "Name": "ÓLEO DE RÍCINO ",
+    "CodeBar": 7898047851197,
+    "ExpirationDate": "2026-10-30T00:00:00",
+    "Amount": 5
+  },
+  {
+    "TimeRemaining": "1 anos, 7 meses, 23 dias",
+    "Name": "OLÉO DE MELALEUCA ",
+    "CodeBar": 123456789987,
+    "ExpirationDate": "2027-06-30T00:00:00",
+    "Amount": 12
+  }
+]

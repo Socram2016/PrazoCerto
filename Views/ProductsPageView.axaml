@@ -202,7 +202,7 @@
           </DataGrid>
         </ScrollViewer>
         
-        <!-- Save notification popup -->
+        <!-- Saved notification popup -->
         <views:BottomNotificationPopupView HorizontalAlignment="Center"></views:BottomNotificationPopupView>
         
         <!--  Edit product Popup  -->
@@ -235,6 +235,7 @@
               </Button>
                 <!-- Close Button -->
                 <Button
+                  Foreground="White"
                   Background="#1a1a1a"
                   Grid.Row="0" 
                   Content="X" 

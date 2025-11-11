@@ -124,34 +124,35 @@ public partial class ViewModelBase : ObservableObject
         //================================================
         
         
-        // Check if day is filled
+        // Check if Date is valid
         //================================================
+        int month = 0;
+        int year = 0;
+        
+        var monthError = string.IsNullOrEmpty(NewProductMonth) ||
+                            !int.TryParse(NewProductMonth, out month) ||
+                            month <= 0 || month >12;
+
+        var yearError = string.IsNullOrEmpty(NewProductYear) ||
+                        !int.TryParse(NewProductYear, out year);
+        
         var dayError = string.IsNullOrEmpty(NewProductDay) ||
                        !int.TryParse(NewProductDay, out var day) ||
-                       !DateTime.TryParse($"{day}/{01}/{2025}",out _);
-        // set red if is not
+                       !DateTime.TryParse($"{day}/{month}/{year}",out _);
+        //================================================
+        
+        
+        // set red if day is not valid
         CheckFields(dayError, ref invalidForm, 
             () => NewProductDayBrush = Brushes.Red);
         //================================================
         
-        
-        // Check if month is filled
-        //================================================
-        var monthError = string.IsNullOrEmpty(NewProductMonth) ||
-                         !int.TryParse(NewProductMonth, out var month) ||
-                         !DateTime.TryParse($"{01}/{month}/{2025}",out _);
-        // set red if is not
+        // set red if month is not
         CheckFields(monthError, ref invalidForm, 
             () => NewProductMonthBrush = Brushes.Red);
         //================================================
         
-        
-        // Check if year is filled
-        //================================================
-        var yearError = string.IsNullOrEmpty(NewProductYear) ||
-                        !int.TryParse(NewProductYear, out var year) ||
-                        !DateTime.TryParse($"{01}/{01}/{year}",out _);
-        // set red if is not
+        // set red if year is not
         CheckFields(yearError, ref invalidForm, 
             () => NewProductYearBrush = Brushes.Red);
         //================================================
