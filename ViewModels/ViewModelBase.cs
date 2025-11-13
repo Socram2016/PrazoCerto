@@ -17,8 +17,8 @@ public partial class ViewModelBase : ObservableObject
     protected ViewModelBase()
     {
         // check if dataDirectory exist
-        if (!Directory.Exists(dataDirectory))
-            Directory.CreateDirectory(dataDirectory);
+        if (!Directory.Exists(_dataDirectory))
+            Directory.CreateDirectory(_dataDirectory);
         
         // check if ProductsFilePath exist
         if (!File.Exists(ProductsFilePath))
@@ -83,10 +83,10 @@ public partial class ViewModelBase : ObservableObject
     
     // Get Jsons path
     //================================================
-    private static string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-    private static string dataDirectory = baseDirectory+Path.DirectorySeparatorChar+"dados";
-    protected readonly string ProductsFilePath = Path.Combine(dataDirectory, "ProductsDatabase.json");
-    protected readonly string ProgramConfigPath = Path.Combine(baseDirectory, "Configs");
+    private static string _baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    private static string _dataDirectory = _baseDirectory+Path.DirectorySeparatorChar+"dados";
+    protected readonly string ProductsFilePath = Path.Combine(_dataDirectory, "ProductsDatabase.json");
+    protected readonly string ProgramConfigPath = Path.Combine(_baseDirectory, "Configs");
     //================================================
 
     // Store current page

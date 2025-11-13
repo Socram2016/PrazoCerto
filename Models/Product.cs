@@ -58,27 +58,32 @@ public class Product : ObservableObject
         Name = name;
         CodeBar = codeBar;
         ExpirationDate = expirationDate;
-
         
+        TimeRemaining = UpdateTimeRemaining(expirationDate);
+        
+        Amount = amount;
+        
+    }
+
+    public string UpdateTimeRemaining(DateTime expirationDate)
+    {
         var daysToExpiration = (ExpirationDate - DateTime.Now).Days;
         
         if (daysToExpiration <= 0)
         {
-            TimeRemaining = "Vencido";
-        }
-        else
-        {
-            
-            int yearsToExpiration = (int)Math.Floor(daysToExpiration/365.0);
-            daysToExpiration -= yearsToExpiration * 365;
-
-            int monthsToExpiration = (int)Math.Floor(daysToExpiration/30.44);
-            daysToExpiration -= monthsToExpiration * 30;
-
-            TimeRemaining = $"{yearsToExpiration} anos, {monthsToExpiration} meses, {daysToExpiration} dias";
+            return "Vencido";
         }
         
-        Amount = amount;
-}
+        int yearsToExpiration = (int)Math.Floor(daysToExpiration/365.0);
+        daysToExpiration -= yearsToExpiration * 365;
 
+        int monthsToExpiration = (int)Math.Floor(daysToExpiration/30.44);
+        daysToExpiration -= monthsToExpiration * 30;
+
+        return  $"{yearsToExpiration} anos, {monthsToExpiration} meses, {daysToExpiration} dias";
+
+        
+        
+    }
+    
 }

@@ -16,6 +16,7 @@ public partial class ProductsPageViewModel : ViewModelBase
     public ProductsPageViewModel()
     {
         if (Products != null )ProductsList = new ObservableCollection<Product>(Products);
+        UpdateProducts();
     }
 
     [ObservableProperty] private Product? _dataGridSelectedProduct;
