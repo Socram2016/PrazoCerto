@@ -127,14 +127,8 @@ public partial class ExpiredProductPageViewModel : ViewModelBase
     [RelayCommand]
     private void ConfirmDelete()
     {
-        if (DataGridSelectedProduct == null || Products == null) return;
         
-        RemoveItem(DataGridSelectedProduct);
-        Products.Remove(DataGridSelectedProduct);
-        DeleteNotificationOpacity = 0;
-        DeleteNotificationPopup = false;
-        
-        UpdateProducts();
+        ConfirmRemove(DataGridSelectedProduct);
         UpdateExpiredProducts();
     }
     

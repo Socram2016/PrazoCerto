@@ -125,6 +125,7 @@
               </StackPanel>
             </Border>
           </Popup>
+          
           <!-- Remove button-->
           <Button
             Width="30"
@@ -203,7 +204,7 @@
         </ScrollViewer>
         
         <!-- Saved notification popup -->
-        <views:BottomNotificationPopupView HorizontalAlignment="Center"></views:BottomNotificationPopupView>
+        <views:BottomNotificationPopupView HorizontalAlignment="Center"/>
         
         <!--  Edit product Popup  -->
         <Popup
@@ -213,7 +214,7 @@
           
           <Border
             Padding="15"
-            Background="Gray"
+            Background="White"
             BorderBrush="Black"
             BorderThickness="1"
             CornerRadius="15">
@@ -225,7 +226,9 @@
               <Grid RowDefinitions="*,*">
                 
                 <!-- Save Button -->
-              <Button Grid.Row="1" 
+              <Button Grid.Row="1"
+                      Height="30"
+                      Width="30"
                       Background="#1a1a1a"
                       VerticalAlignment="Bottom" 
                       Command="{Binding SaveProductCommand}">
@@ -235,6 +238,10 @@
               </Button>
                 <!-- Close Button -->
                 <Button
+                  Height="30"
+                  Width="30"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center"
                   Foreground="White"
                   Background="#1a1a1a"
                   Grid.Row="0" 

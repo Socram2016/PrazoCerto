@@ -1,6 +1,5 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
@@ -14,11 +13,19 @@ using System;
 
 namespace PrazoCerto;
 
-public partial class App : Application
+public class App : Application
 {
+    // Directories
+    //================================================
+    private static readonly string BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    private static readonly string DataDirectory = BaseDirectory+Path.DirectorySeparatorChar+"dados";
+    protected readonly string ProductsFilePath = Path.Combine(DataDirectory, "ProductsDatabase.json");
+    //================================================
+        
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+        
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -33,40 +40,20 @@ public partial class App : Application
                 DataContext = new MainWindowViewModel(),
             };
         }
-
         
-        string configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"ProductsDatabase.json");
-        if (File.Exists(configFilePath))
-        {
-
-            string jsonProducts = File.ReadAllText(configFilePath);
-            var products = JsonConvert.DeserializeObject<List<Product>>(jsonProducts);
-
-            // atualiza a data de validade
-            foreach (var product in products!)
-            {
-                if (product.TimeRemaining != "Vencido")
-                {
-                    var daysToExpiration = (product.ExpirationDate - DateTime.Now).Days;
-
-                    if (daysToExpiration <= 0)
-                    {
-                        product.TimeRemaining = "Vencido";
-                    }
-                    else
-                    {
-                        product.TimeRemaining = $"{(product.ExpirationDate - DateTime.Now).Days} dias";
-                    }
-                    
-                }
-            }
+        // Update Time Remaining of the json
+        //================================================
+        string stringFromFile = File.ReadAllText(ProductsFilePath);
+        List<Product>? products = JsonConvert.DeserializeObject<List<Product>>(stringFromFile);
+        if (products == null) return;
             
-            
-            string productsToJson = JsonConvert.SerializeObject(products, Formatting.Indented);
-            File.WriteAllText(configFilePath, productsToJson);
-
-        }
-
+        foreach (var t in products)
+        { 
+            t.TimeRemaining = t.UpdateTimeRemaining(t.ExpirationDate);
+        } 
+        string stringToJson = JsonConvert.SerializeObject(products, Formatting.Indented);
+        File.WriteAllText(ProductsFilePath, stringToJson);
+        //================================================
 
         base.OnFrameworkInitializationCompleted();
     }

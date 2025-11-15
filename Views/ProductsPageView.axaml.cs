@@ -24,7 +24,6 @@ namespace PrazoCerto.Views;
             InitializeComponent();
             // update
             AttachedToVisualTree += OnAttachedToVisualTree;
-            UpdateProductFile();
             
         }
 

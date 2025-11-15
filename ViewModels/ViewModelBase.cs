@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
@@ -8,7 +7,6 @@ using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
 using PrazoCerto.Models;
-using PrazoCerto.Views;
 
 namespace PrazoCerto.ViewModels;
 
@@ -40,7 +38,7 @@ public partial class ViewModelBase : ObservableObject
     // Texts
     //================================================
     [ObservableProperty] private string _newProductName = string.Empty;
-    [ObservableProperty] private string _newProductCodeBar = string.Empty;
+    [ObservableProperty] private string _newProductCodeBar = "000000";
     [ObservableProperty] private string _newProductDay = string.Empty;
     [ObservableProperty] private string _newProductMonth = string.Empty;
     [ObservableProperty] private string _newProductYear = string.Empty;
@@ -98,10 +96,11 @@ public partial class ViewModelBase : ObservableObject
     // Products
     //================================================
     private ObservableCollection<Product>? _products;
-    public ObservableCollection<Product>? Products
+
+    protected ObservableCollection<Product>? Products
     {
         get => _products!;
-        set => SetProperty(ref _products, value);
+        private set => SetProperty(ref _products, value);
     }
     //================================================
     
@@ -109,7 +108,7 @@ public partial class ViewModelBase : ObservableObject
 
     protected bool ValidateForm()
     {
-        // reset burshes
+        // reset brushes
         ResetBrushes(); 
     
         // Variable to track if any error occurred
@@ -129,16 +128,16 @@ public partial class ViewModelBase : ObservableObject
         int month = 0;
         int year = 0;
         
-        var monthError = string.IsNullOrEmpty(NewProductMonth) ||
+        bool monthError = string.IsNullOrEmpty(NewProductMonth) ||
                             !int.TryParse(NewProductMonth, out month) ||
                             month <= 0 || month >12;
 
-        var yearError = string.IsNullOrEmpty(NewProductYear) ||
-                        !int.TryParse(NewProductYear, out year);
+        bool yearError = string.IsNullOrEmpty(NewProductYear) ||
+                         !int.TryParse(NewProductYear, out year);
         
-        var dayError = string.IsNullOrEmpty(NewProductDay) ||
-                       !int.TryParse(NewProductDay, out var day) ||
-                       !DateTime.TryParse($"{day}/{month}/{year}",out _);
+        bool dayError = string.IsNullOrEmpty(NewProductDay) ||
+                        !int.TryParse(NewProductDay, out var day) ||
+                        !DateTime.TryParse($"{day}/{month}/{year}",out _);
         //================================================
         
         
@@ -156,8 +155,8 @@ public partial class ViewModelBase : ObservableObject
         CheckFields(yearError, ref invalidForm, 
             () => NewProductYearBrush = Brushes.Red);
         //================================================
-
-
+        
+        /*
         // check if code bar is ok
         //================================================
         var codeBarError = string.IsNullOrEmpty(NewProductCodeBar) || 
@@ -166,11 +165,13 @@ public partial class ViewModelBase : ObservableObject
         CheckFields(codeBarError, ref invalidForm, 
             () => NewProductCodeBarBrush = Brushes.Red);
         //================================================
+        */
+        
         
         // check if amount is ok
         //================================================
-        var amountError = string.IsNullOrEmpty(NewProductAmount) ||
-                          !ToCheck.IsInt(NewProductAmount);
+        bool amountError = string.IsNullOrEmpty(NewProductAmount) ||
+                           !ToCheck.IsInt(NewProductAmount);
         // set red if is not
         CheckFields(amountError, ref invalidForm, 
             () => NewProductAmountBrush = Brushes.Red);
@@ -191,7 +192,7 @@ public partial class ViewModelBase : ObservableObject
         NewProductAmount = "";
     }
     
-    protected void ResetBrushes()
+    private void ResetBrushes()
     {
         IBrush corPadrão = Brushes.Black;
 
@@ -211,29 +212,29 @@ public partial class ViewModelBase : ObservableObject
         invalidForm = true;
     }
 
-    // remove item from data grid
-    public void RemoveItem(Product dataGridSelectedProduct)
+    // Update JSON Products
+    private void UpdateJsonProducts()
     {
-        // remove 
-        Products?.Remove(dataGridSelectedProduct);
         // update json
         var stringToJson = JsonConvert.SerializeObject(Products,Formatting.Indented);
         File.WriteAllText(ProductsFilePath,stringToJson);
     }
     
-    // update Products list
-    public void UpdateProducts(bool getJson = true)
+    // update Products base
+    protected void UpdateProducts()
     {
-        // get json
+        // get JSON
         string stringFromJson = File.ReadAllText(ProductsFilePath);
         Products?.Clear();
         
         // update Products variable
         Products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(stringFromJson);
     }
-
+    
+    
+    
     // Notification
-    public async Task SaveNotification()
+    protected async Task SaveNotification()
     {
         SaveNotificationPopup = true;
         SaveNotificationOpacity = 1.0;
@@ -241,5 +242,17 @@ public partial class ViewModelBase : ObservableObject
         SaveNotificationOpacity = 0.0;
         await Task.Delay(1000);
         SaveNotificationPopup = false;
+    }
+
+    protected void ConfirmRemove(Product? dataGridSelectedProduct)
+    {
+        if (dataGridSelectedProduct == null || Products == null) return;
+        
+        Products.Remove(dataGridSelectedProduct);
+        UpdateJsonProducts();
+        DeleteNotificationOpacity = 0;
+        DeleteNotificationPopup = false;
+        
+        UpdateProducts();
     }
 }

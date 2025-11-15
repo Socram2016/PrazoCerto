@@ -1,5 +1,4 @@
-﻿
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using PrazoCerto.Models;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -74,12 +73,12 @@ public partial class ProductsPageViewModel : ViewModelBase
         }
     }
 
-    // Botão de limpar seleção
+    //  Clear selection button
     [RelayCommand]
-    private void ClearSelection() //botão de limpeza da pesquisa
+    private void ClearSelection() 
     {
         SearchTextBox = "";
-        if (Products != null) ProductsList = new ObservableCollection<Product>(Products);
+        UpdateProductsList();
     }
 
     // Delete button
@@ -87,6 +86,8 @@ public partial class ProductsPageViewModel : ViewModelBase
     private void DeleteButton()
     {
         if (DataGridSelectedProduct == null || ProductsList == null) return;
+        
+        // Open "confirm delete popup"
         DeleteNotificationOpacity = 1;
         DeleteNotificationPopup = true;
     }
@@ -95,13 +96,8 @@ public partial class ProductsPageViewModel : ViewModelBase
     [RelayCommand]
     private void ConfirmDelete()
     {
-        if (DataGridSelectedProduct == null || ProductsList == null) return;
-        
-        RemoveItem(DataGridSelectedProduct);
-        ProductsList.Remove(DataGridSelectedProduct);
-        DeleteNotificationOpacity = 0;
-        DeleteNotificationPopup = false;
-        UpdateProducts();
+        ConfirmRemove(DataGridSelectedProduct);
+        UpdateProductsList();
     }
     
     // Add Product
@@ -179,10 +175,16 @@ public partial class ProductsPageViewModel : ViewModelBase
         
         UpdateProducts();
         
-        if (Products != null) ProductsList = new ObservableCollection<Product>(Products);
+        UpdateProductsList();
         
         _ = SaveNotification();
         IsEditPopupOpen = !IsEditPopupOpen;
+    }
+    
+    // update
+    public void UpdateProductsList()
+    {
+        if (Products != null) ProductsList = new ObservableCollection<Product>(Products);
     }
 }
 
